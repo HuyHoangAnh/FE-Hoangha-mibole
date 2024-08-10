@@ -1,0 +1,56 @@
+.banner {
+    padding-top: 10px;
+}
+
+// .button-banner{
+//     width: 100px;
+//     border: none;
+//     cursor: pointer;
+//     background-color: transparent;
+// }
+
+// button.button-banner-enable:hover{
+//     background-color: #c0c0c0;
+// }
+// button.button-banner-disabled:hover{
+//     background-color: transparent;
+//     cursor: not-allowed;
+// }
+
+.image-banner {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    &_showon {
+        animation-name: showonimage;
+        animation-duration: 3s;
+    }
+}
+
+.button-banner{
+    width: 297px;
+    height: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 6px #00000029;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+@keyframes showonimage {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.quick-sales{
+    display: flex;
+    margin: 20px 0 50px;
+}
+.items{
+    margin-right: 10px;
+    width: calc(1/4*100% - (1 - 1/4)*10px);
+}
+
+
