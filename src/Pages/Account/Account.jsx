@@ -21,9 +21,9 @@ const Account = () => {
       <Header listHeader={listHeader} />
       {/* <NewHeader /> */}
       <div style={{ height: "52px" }}></div>
-      <div class="container">
-        <div class="login-form">
-          <div class="login-bg">
+      <div className="container">
+        <div className="login-form">
+          <div className="login-bg">
             <img src={LoginBg} alt="login background" />
           </div>
           {isOpenSignIn && <AccountSignIn setIsOpenSignIn={setIsOpenSignIn} setIsOpenSignUp={setIsOpenSignUp} />}
@@ -38,6 +38,13 @@ const Account = () => {
 export default Account;
 
 export const SWrapAccount = styled.div`
+  .container {
+    max-width: 1200px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+  }
   .login-form {
     margin: 30px 0;
     display: flex;
@@ -82,6 +89,7 @@ export const SWrapAccount = styled.div`
           padding: 10px;
           border: none;
           width: 100%;
+          color: #000;
         }
       }
     }
