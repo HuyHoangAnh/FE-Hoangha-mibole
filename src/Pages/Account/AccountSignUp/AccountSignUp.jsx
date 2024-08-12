@@ -9,16 +9,16 @@ const AccountSignUp = (props) => {
     //! Effect
     //! Render
   return (
-    <div class="form">
-      <div class="center" style={{ textAlign: "center" }}>
+    <div className="form">
+      <div className="center" style={{ textAlign: "center" }}>
         <h2>Đăng ký tài khoản</h2>
         <p>Chú ý các nội dung có dấu * bạn cần phải nhập</p>
       </div>
-      <div id="registerForm" class="hh-form">
+      <div id="registerForm" className="hh-form">
         <form method="post" action="/Account/Register">
-          <div class="form-controls">
+          <div className="form-controls">
             <label>Tài khoản:</label>
-            <div class="controls">
+            <div className="controls">
               <input
                 type="text"
                 name="UserName"
@@ -29,9 +29,9 @@ const AccountSignUp = (props) => {
               />
             </div>
           </div>
-          <div class="form-controls">
+          <div className="form-controls">
             <label>Họ tên:</label>
-            <div class="controls">
+            <div className="controls">
               <input
                 type="text"
                 name="Title"
@@ -42,9 +42,9 @@ const AccountSignUp = (props) => {
               />
             </div>
           </div>
-          <div class="form-controls">
+          <div className="form-controls">
             <label>Mật khẩu:</label>
-            <div class="controls">
+            <div className="controls">
               <input
                 type="text"
                 name="PasswordHash"
@@ -55,9 +55,9 @@ const AccountSignUp = (props) => {
               />
             </div>
           </div>
-          <div class="form-controls">
+          <div className="form-controls">
             <label>Nhập lại mật khẩu:</label>
-            <div class="controls">
+            <div className="controls">
               <input
                 type="text"
                 name="SecurityStamp"
@@ -68,9 +68,9 @@ const AccountSignUp = (props) => {
               />
             </div>
           </div>
-          <div class="form-controls">
+          <div className="form-controls">
             <label>Email:</label>
-            <div class="controls">
+            <div className="controls">
               <input
                 type="text"
                 name="Email"
@@ -81,28 +81,28 @@ const AccountSignUp = (props) => {
               />
             </div>
           </div>
-          <div class="form-controls">
+          <div className="form-controls">
             <label>Giới tính:</label>
-            <div class="controls">
-              <label class="radio-ctn">
+            <div className="controls">
+              <label className="radio-ctn">
                 <input type="radio" name="Sex" value="true" />
-                <span class="checkmark"></span>
+                <span className="checkmark"></span>
                 <span>
                   <strong>Nam</strong>
                 </span>
               </label>
-              <label class="radio-ctn">
+              <label className="radio-ctn">
                 <input type="radio" name="Sex" value="false" />
-                <span class="checkmark"></span>
+                <span className="checkmark"></span>
                 <span>
                   <strong>Nữ</strong>
                 </span>
               </label>
             </div>
           </div>
-          <div class="form-controls">
+          <div className="form-controls">
             <label>Ngày tháng năm sinh:</label>
-            <div class="controls">
+            <div className="controls">
               <input
                 type="text"
                 value=""
@@ -113,9 +113,9 @@ const AccountSignUp = (props) => {
               />
             </div>
           </div>
-          <div class="form-controls">
+          <div className="form-controls">
             <label>Điện thoại:</label>
-            <div class="controls">
+            <div className="controls">
               <input
                 type="tel"
                 name="PhoneNumber"
@@ -126,9 +126,9 @@ const AccountSignUp = (props) => {
               />
             </div>
           </div>
-          {/* <div class="form-controls">
+          {/* <div className="form-controls">
             <label>Địa chỉ:</label>
-            <div class="controls">
+            <div className="controls">
               <input
                 type="text"
                 name="Address"
@@ -139,9 +139,9 @@ const AccountSignUp = (props) => {
               />
             </div>
           </div>
-          <div class="form-controls">
+          <div className="form-controls">
             <label>Tỉnh/Thành phố:</label>
-            <div class="controls">
+            <div className="controls">
               <select
                 name="SystemCityID"
                 id="SystemCityID"
@@ -215,9 +215,9 @@ const AccountSignUp = (props) => {
               </select>
             </div>
           </div>
-          <div class="form-controls">
+          <div className="form-controls">
             <label>Quận/Huyện:</label>
-            <div class="controls">
+            <div className="controls">
               <select
                 id="SystemDistrictID"
                 name="SystemDistrictID"
@@ -229,13 +229,13 @@ const AccountSignUp = (props) => {
               </select>
             </div>
           </div> */}
-          <div class="form-controls">
-          <div class="button-group">
-              <button class="btn btn-submit" onClick={() => {}}>
+          <div className="form-controls">
+          <div className="button-group">
+              <button className="btn btn-submit" onClick={() => {}}>
                 ĐĂNG KÝ TÀI KHOẢN
               </button>
               <button
-                class="btn btn-link"
+                className="btn btn-link"
                 onClick={() => {
                   setIsOpenSignIn(true);
                   setIsOpenSignUp(false);
@@ -245,8 +245,8 @@ const AccountSignUp = (props) => {
               </button>
             </div>
           </div>
-          <div class="form-controls">
-            <div class="submit-controls">
+          <div className="form-controls">
+            <div className="submit-controls">
               <p>
                 <strong>
                   Bằng việc đăng kí này, bạn đã chấp nhận các chính sách của
