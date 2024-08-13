@@ -2,7 +2,8 @@ import React from 'react'
 import styles from './Header.module.scss'
 import classNames from 'classnames/bind'
 import LogoSearch from '../../common/LogoSearch.jsx'
-
+import { useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
 
 const cx = classNames.bind(styles)
 
@@ -10,9 +11,17 @@ const Header = (props) => {
     //! Props
     const {listHeader} = props
     //! State
+    const navigate = useNavigate();
     //! Function
+    const handleLogout = () => {
+        localStorage.removeItem("token");
+        navigate("/account")
+        toast.success("Log out success")
+    }
     //! Effect
     //! Render
+    console.log("123checked", localStorage.getItem("token"));
+    
     const showListHeader = listHeader.map((el) => {
         return (
             <a href={el.url}>
@@ -26,6 +35,11 @@ const Header = (props) => {
             <div className={cx('top-navigation')}>
                 <div className={cx('container-header')}>
                     {showListHeader}
+                    {localStorage.getItem("token") &&
+                    <a onClick={handleLogout} style={{cursor: "pointer"}}>
+                        Logout
+                    </a>
+                    }
                     <div className={cx('header-search')}>
                         <LogoSearch color={"#fff"} />
                     </div>

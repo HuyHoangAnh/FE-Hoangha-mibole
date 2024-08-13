@@ -70,6 +70,7 @@ export const SWrapAccount = styled.div`
       flex-direction: column;
       justify-content: space-around;
       padding: 20px 120px;
+      color: #000;
       h1 {
         font-size: 2em;
       }
