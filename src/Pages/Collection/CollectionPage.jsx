@@ -10,15 +10,20 @@ import Social from "../../common/Social";
 import TextCollections from "../../Component/TextCollection/TextCollections";
 import NewHeader from "../../Component/Header/Newheader";
 import styled from "styled-components";
+import logoApple from "../../assets/logo-apple.webp"
+import logoSamsung from "../../assets/logo-samsung.webp"
+import logoXiaomi from "../../assets/logo-xiaomi.webp"
 const listBannerImage = [
   {
     id: 1,
     title: "Apple",
+    urlImg: logoApple,
     url: "/",
   },
   {
     id: 2,
     title: "SamSung",
+    urlImg: logoSamsung,
     url: "/",
   },
   {
@@ -38,7 +43,8 @@ const listBannerImage = [
   },
   {
     id: 6,
-    title: "Redmi",
+    title: "Xiaomi",
+    urlImg: logoXiaomi,
     url: "/",
   },
 ];
@@ -49,22 +55,22 @@ const CollectionPage = () => {
   return (
     <div>
       <SWrapCollectionPage>
+        <Header listHeader={listHeader} />
         <div className={cx("container")}>
-          <div>
+          <div style={{ height: "52px" }}></div>
+          <div className={cx("collection-container")}>
             {/* <NewHeader /> */}
-            <Header listHeader={listHeader} />
-            <div style={{ height: "52px" }}></div>
             <Banner listBanner={listBanner} />
-            <div className={cx("container")}>
-              <div className={cx("list-company")}>
-                {listBannerImage.map((el) => {
-                  return (
-                    <div key={el.id} className={cx("items")}>
-                      <p>{el?.title}</p>
-                    </div>
-                  );
-                })}
-              </div>
+            <div className={cx("list-company")}>
+              {listBannerImage.map((el) => {
+                return (
+                  <div key={el.id} className={cx("items")}>
+                    {el?.urlImg
+                      ? <img src={el?.urlImg} />
+                      : <p className={cx("no-logo")}>{el?.title}</p>}
+                  </div>
+                );
+              })}
             </div>
             <div className={cx("list-container")}>
               <FilterCollection />
@@ -91,13 +97,20 @@ export const SWrapCollectionPage = styled.div`
     display: flex;
     justify-content: center;
     margin: 0 auto;
+    color: #000;
+  }
+  .collection-container{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
   }
 
-  /* .list-company {
+  .list-company {
     width: 100%;
     display: flex;
     gap: 10px;
     .items {
+      width: 100%;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -105,5 +118,14 @@ export const SWrapCollectionPage = styled.div`
       height: 50px;
       margin: 0;
     }
-  } */
+    .no-logo{
+    /* color: var(--blackText); */
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    justify-items: center;
+    font-size: 20px;
+    font-weight: bold;
+    }
+  }
 `;

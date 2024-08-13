@@ -20,8 +20,6 @@ const Header = (props) => {
     }
     //! Effect
     //! Render
-    console.log("123checked", localStorage.getItem("token"));
-    
     const showListHeader = listHeader.map((el) => {
         return (
             <a href={el.url}>
@@ -35,9 +33,13 @@ const Header = (props) => {
             <div className={cx('top-navigation')}>
                 <div className={cx('container-header')}>
                     {showListHeader}
-                    {localStorage.getItem("token") &&
+                    {localStorage.getItem("token") ?
                     <a onClick={handleLogout} style={{cursor: "pointer"}}>
                         Logout
+                    </a>
+                    : 
+                    <a href='/account' style={{cursor: "pointer"}}>
+                        Login
                     </a>
                     }
                     <div className={cx('header-search')}>

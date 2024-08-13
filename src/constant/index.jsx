@@ -16,30 +16,30 @@ import IconTinhot from '../assets/icon-tinhot.png'
 import IconWatch from '../assets/icon-watch.png'
 
 export const listBanner = [
-  {
-      id: 0,
-      imgPath: BannerIphone,
-      title: "HUMG1",
-      content: "Đại học Mỏ - Địa chất",
-  },
-  {
-      id: 1,
-      imgPath: BannerSony,
-      title: "HUMG2",
-      content: "Đại học Mỏ - Địa chất",
-  },
-  {
-      id: 2,
-      imgPath: BannerNote13,
-      title: "HUMG3",
-      content: "Đại học Mỏ - Địa chất",
-  },
-  {
-      id: 3,
-      imgPath: BannerZFold,
-      title: "HUMG4",
-      content: "Đại học Mỏ - Địa chất",
-  },
+    {
+        id: 0,
+        imgPath: BannerIphone,
+        title: "HUMG1",
+        content: "Đại học Mỏ - Địa chất",
+    },
+    {
+        id: 1,
+        imgPath: BannerSony,
+        title: "HUMG2",
+        content: "Đại học Mỏ - Địa chất",
+    },
+    {
+        id: 2,
+        imgPath: BannerNote13,
+        title: "HUMG3",
+        content: "Đại học Mỏ - Địa chất",
+    },
+    {
+        id: 3,
+        imgPath: BannerZFold,
+        title: "HUMG4",
+        content: "Đại học Mỏ - Địa chất",
+    },
 ]
 
 export const listHeader = [
@@ -96,18 +96,12 @@ export const listHeader = [
         title: 'Sửa chữa',
         icon: IconSuachua,
         url: '/collections',
-    },
-    {
-        id: 10,
-        title: 'Đăng nhậ',
-        icon: IconTinhot,
-        url: '/account',
-    },
+    }
 ]
 
 export const listAppleReseller = [
     {
-        id:1,
+        id: 1,
         header: "Apple authorised Reseller",
         linkCollection: [
             {
@@ -146,7 +140,7 @@ export const listAppleReseller = [
                 url: "/phu-kien/phu-kien-apple/phu-kien-chinh-hang-apple",
             },
             {
-                id:8,
+                id: 8,
                 title: "Xem tất cả",
                 url: "/apple",
                 class: "actived"
