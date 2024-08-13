@@ -5,6 +5,8 @@ import styles from './App.module.scss';
 import HomePage from './Pages/HomePage/HomePage';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { publicRoutes } from './Router/Router.jsx';
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const cx = classNames.bind(styles)
 function App() {
@@ -21,6 +23,7 @@ function App() {
             />;
           })}
         </Routes>
+        <ToastContainer />
       </div>
     </Router>
     </>

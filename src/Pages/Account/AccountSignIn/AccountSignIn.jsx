@@ -1,24 +1,40 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { loginApi } from "../../../services/Account.jsx";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const AccountSignIn = (props) => {
   //! Props
   const { setIsOpenSignIn, setIsOpenSignUp } = props;
   //! State
+  const navigate = useNavigate();
   const [account, setAccount] = useState("");
   const [password, setPassword] = useState("");
   const [isShowPassword, setIsShowPassword] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   //! Function
   const handleLogin = async () => {
+    setIsLoading(true)
     if (!account || !password) {
       toast.error("Email/Password is required!");
       return;
     }
     let res = await loginApi(account, password);
-    console.log("checked", res?.data?.token);
+    if (res && res?.data?.token) {
+      localStorage.setItem("token", res?.data?.token);
+      navigate("/")
+    } else {
+      if (res && res?.data?.statusCode === 401) {
+        toast.error(res?.data?.msg);
+      }
+    }
+    setIsLoading(false)
   };
   //! Effect
+  useEffect(() => {
+    let token = localStorage.getItem("token");
+    token && navigate("/")
+  }, [])
   //! Render
   return (
     <div className="form">
@@ -33,7 +49,7 @@ const AccountSignIn = (props) => {
               placeholder="Email or Phone number ..."
               value={account}
               onChange={(event) => {
-                setEmail(event.target.value);
+                setAccount(event.target.value);
               }}
             />
           </div>
@@ -66,7 +82,11 @@ const AccountSignIn = (props) => {
                 handleLogin();
               }}
             >
-              ĐĂNG NHẬP
+            {isLoading ?
+              <i className="fas fa-spinner fa-pulse"></i>
+             : <p>ĐĂNG NHẬP</p> 
+             }
+              
             </button>
             <button
               className="btn btn-link"

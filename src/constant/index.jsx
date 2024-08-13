@@ -99,9 +99,9 @@ export const listHeader = [
     },
     {
         id: 10,
-        title: 'Tin hot',
+        title: 'Đăng nhậ',
         icon: IconTinhot,
-        url: '/collections',
+        url: '/account',
     },
 ]
 
