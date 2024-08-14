@@ -3,7 +3,7 @@ import { loginApi } from "../../../services/Account.jsx";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
-const AccountSignIn = (props) => {
+const AccountLogIn = (props) => {
   //! Props
   const { setIsOpenSignIn, setIsOpenSignUp } = props;
   //! State
@@ -111,4 +111,4 @@ const AccountSignIn = (props) => {
   );
 };
 
-export default AccountSignIn;
+export default AccountLogIn;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Banner from "../../Component/Banner/Banner";
 import Header from "../../Component/Header/Header";
 import BannerImage from "../../Component/Banner/BannerImage";
@@ -13,15 +13,29 @@ import BannerAds from "../../Component/Banner/BannerAds";
 import Social from "../../common/Social";
 import NewHeader from "../../Component/Header/Newheader";
 import styled from "styled-components";
+import { useMutation, useQuery } from "@tanstack/react-query";
+import { getProductApi } from "../../services/Product";
 
 const cx = classNames.bind(styles);
 
 const HomePage = () => {
   //! Props
   //! State
+  const [ productData, setProductData ] = useState("")
   //! Function
+  const { refetch, data } = useQuery({
+    queryKey: ["product-data"],
+    queryFn: getProductApi,
+    enabled: true,
+    onSuccess: (response) => {
+      console.log(response?.data, "checked");
+      setProductData(response?.data);
+    },
+  });
   //! Effect
   //! Render
+  console.log("productData",productData);
+  
   return (
     <div className={cx("home-container")}>
       <div>

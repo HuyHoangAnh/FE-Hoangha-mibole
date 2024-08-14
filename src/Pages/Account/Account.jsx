@@ -4,8 +4,8 @@ import { listHeader } from "../../constant";
 import styled from "styled-components";
 import Social from "../../common/Social";
 import LoginBg from "../../assets/login-bg.png";
-import AccountSignUp from "./AccountSignUp/AccountSignUp";
-import AccountSignIn from "./AccountSignIn/AccountSignIn";
+import AccountRegister from "./AccountRegister/AccountRegister";
+import AccountLogIn from "./AccountLogIn/AccountLogIn";
 import NewHeader from "../../Component/Header/Newheader";
 
 const Account = () => {
@@ -13,7 +13,7 @@ const Account = () => {
   //! State
   const [isOpenSignIn, setIsOpenSignIn] = useState(true);
   const [isOpenSignUp, setIsOpenSignUp] = useState(false);
-  //! Funtion
+  //! Function
   //! Effect
   //! Render
   return (
@@ -26,8 +26,8 @@ const Account = () => {
           <div className="login-bg">
             <img src={LoginBg} alt="login background" />
           </div>
-          {isOpenSignIn && <AccountSignIn setIsOpenSignIn={setIsOpenSignIn} setIsOpenSignUp={setIsOpenSignUp} />}
-          {isOpenSignUp && <AccountSignUp setIsOpenSignIn={setIsOpenSignIn} setIsOpenSignUp={setIsOpenSignUp} />}
+          {isOpenSignIn && <AccountLogIn setIsOpenSignIn={setIsOpenSignIn} setIsOpenSignUp={setIsOpenSignUp} />}
+          {isOpenSignUp && <AccountRegister setIsOpenSignIn={setIsOpenSignIn} setIsOpenSignUp={setIsOpenSignUp} />}
         </div>
       </div>
       <Social />
