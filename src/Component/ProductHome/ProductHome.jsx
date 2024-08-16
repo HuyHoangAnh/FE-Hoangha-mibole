@@ -10,7 +10,7 @@ const cx = classNames.bind(styles);
 
 const ProductHome = (props) => {
   //! Props
-  const { listAppleReseller } = props;
+  const { listAppleReseller,productData } = props;
   //! State
   //! Function
   //! Effect
@@ -20,7 +20,7 @@ const ProductHome = (props) => {
       <div className={cx("container")}>
         <div className={cx("box-product-home box-home")}>
           <HeaderProduct listAppleReseller={listAppleReseller} />
-          <ListProductHome listProductApple={listProductApple} />
+          <ListProductHome listProductApple={listProductApple} productData={productData}/>
         </div>
       </div>
     </SWrapProductHome>
@@ -137,22 +137,6 @@ export const SWrapProductHome = styled.div`
   .sticker span {
     display: block;
   }
-  .lts-product .item .cover {
-    position: absolute;
-    width: 100%;
-    top: 100px;
-  }
-
-  .lts-product .item .cover .label {
-    color: yellow;
-    background: #dd5900;
-    margin: -95px 5px 0 150px;
-    padding: 3px;
-    border-radius: 6px;
-    font-size: 11px;
-    font-weight: 600;
-  }
-
   .lts-product .item .info {
     margin-top: 5px;
     padding: 0 10px 15px 10px;

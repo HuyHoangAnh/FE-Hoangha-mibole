@@ -27,15 +27,13 @@ const HomePage = () => {
     queryKey: ["product-data"],
     queryFn: getProductApi,
     enabled: true,
-    onSuccess: (response) => {
-      console.log(response?.data, "checked");
+    onSuccess: (response) => { 
       setProductData(response?.data);
     },
   });
   //! Effect
   //! Render
-  console.log("productData",productData);
-  
+
   return (
     <div className={cx("home-container")}>
       <div>
@@ -45,7 +43,7 @@ const HomePage = () => {
         <Banner listBanner={listBanner} />
         <BannerImage />
         {/* <FlashSale /> */}
-        <ProductHome listAppleReseller={listAppleReseller} />
+        <ProductHome listAppleReseller={listAppleReseller} productData={productData} />
         <Social />
         <BannerAds />
       </div>

@@ -1,49 +1,48 @@
 import React from 'react'
+import IPhone11 from "../../assets/iphone-11.webp"
 import classNames from 'classnames/bind'
 import styles from './ProductHome.module.scss'
+import Label from '../Label/Label'
 
 const cx = classNames.bind(styles)
 
 
 const ListProductHome = (props) => {
     //! Props
-    const {listProductApple} = props
+    const {listProductApple, productData} = props
     //! State
     //! Function
     //! Effect
     //! Render
     return(
         <div className={cx('col-content lts-product')}>
-        {listProductApple?.map((el) => {
+        {productData?.data?.map((el) => {
             return (
             <div className={cx('item')}>
                 <div className={cx('img')}>
                     <a href={el?.urlProduct} title='product'>
                         <img 
-                        src={el?.urlImg}
-                        alt={el?.title}
+                        // src={el?.images}
+                        src={IPhone11}
+                        alt={el?.productName}
                         />
                     </a>
                 </div>
-                <div className={cx("sticker sticker-left")}>
+                {/* <div className={cx("sticker sticker-left")}>
                     <span>
                         <img src={el?.bannerImg} alt="Chính hãng Apple" />
                     </span>
-                </div>
-                <div className={cx('cover')}>
-                    <div className={cx('label')} >
-                    <span style={{color: "white", fontSize: "11px"}}>{el?.bannerText}</span>
-                    </div>
-                </div>
+                </div> */}
+                <Label labelText={el?.discountEvent} />
                 <div className={cx("info")}>
-                    <a href={el?.urlProduct} className={cx("title")} title="iPhone 11 (64GB) - Chính hãng VN/A">iPhone 11 (64GB) - Chính hãng VN/A</a>
+                    <a href={el?.urlProduct} className={cx("title")} title={el?.productName}>{el?.productName}</a>
                     <span className={cx("price")}>
-                        <strong>{el?.priceSale} đ</strong>
-                        <strike>{el?.priceDefault} ₫</strike>
+                        <strong>{el?.promotionalPrice}đ</strong>{" "}
+                        <strike>{el?.originalPrice}₫</strike>
                     </span>
-                    <div style={{paddingTop:"8px", fontStyle:"italic", textAlign:"left",}}>
+                    {/* <div style={{paddingTop:"8px", fontStyle:"italic", textAlign:"left",}}>
                         <label>Giá lên đời từ: <strong className={cx("text-red")}>{el?.priceUpSale} ₫</strong></label>
-                    </div>
+                    </div> */}
                     <div class="note">
                         <span class="bag">KM</span> 
                         <label title="Thu cũ đổi mới lên đời điện thoại Android &amp; Máy tính bảng, tiết kiệm tới 20 triệu đồng">
