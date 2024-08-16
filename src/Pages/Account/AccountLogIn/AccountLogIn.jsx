@@ -22,7 +22,8 @@ const AccountLogIn = (props) => {
     let res = await loginApi(account, password);
     if (res && res?.data?.token) {
       localStorage.setItem("token", res?.data?.token);
-      navigate("/")
+      res?.data?.user?.role === 'admin' ? navigate("/collections") : navigate("/");
+      localStorage.setItem("userId", res?.data?.user?._id)
     } else {
       if (res && res?.data?.statusCode === 401) {
         toast.error(res?.data?.msg);
@@ -31,10 +32,10 @@ const AccountLogIn = (props) => {
     setIsLoading(false)
   };
   //! Effect
-  useEffect(() => {
-    let token = localStorage.getItem("token");
-    token && navigate("/")
-  }, [])
+  // useEffect(() => {
+  //   let token = localStorage.getItem("token");
+  //   token && navigate("/")
+  // }, [])
   //! Render
   return (
     <div className="form">

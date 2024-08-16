@@ -9,51 +9,53 @@ const cx = classNames.bind(styles)
 
 const ListProductHome = (props) => {
     //! Props
-    const {listProductApple, productData} = props
+    const { listProductApple, productData } = props
     //! State
     //! Function
     //! Effect
     //! Render
-    return(
+    return (
         <div className={cx('col-content lts-product')}>
-        {productData?.data?.map((el) => {
-            return (
-            <div className={cx('item')}>
-                <div className={cx('img')}>
-                    <a href={el?.urlProduct} title='product'>
-                        <img 
-                        // src={el?.images}
-                        src={IPhone11}
-                        alt={el?.productName}
-                        />
-                    </a>
-                </div>
-                {/* <div className={cx("sticker sticker-left")}>
+            {productData?.data?.map((el, index) => {
+                return (
+                    <a href={`/product/${el?._id}`} className={cx('item')} key={index}>
+                        <div className={cx('img')}>
+                            <a href={el?.urlProduct} title='product'>
+                                <img
+                                    // src={el?.images}
+                                    src={IPhone11}
+                                    alt={el?.productName}
+                                />
+                            </a>
+                        </div>
+                        {/* <div className={cx("sticker sticker-left")}>
                     <span>
                         <img src={el?.bannerImg} alt="Chính hãng Apple" />
                     </span>
                 </div> */}
-                <Label labelText={el?.discountEvent} />
-                <div className={cx("info")}>
-                    <a href={el?.urlProduct} className={cx("title")} title={el?.productName}>{el?.productName}</a>
-                    <span className={cx("price")}>
-                        <strong>{el?.promotionalPrice}đ</strong>{" "}
-                        <strike>{el?.originalPrice}₫</strike>
-                    </span>
-                    {/* <div style={{paddingTop:"8px", fontStyle:"italic", textAlign:"left",}}>
-                        <label>Giá lên đời từ: <strong className={cx("text-red")}>{el?.priceUpSale} ₫</strong></label>
-                    </div> */}
-                    <div class="note">
-                        <span class="bag">KM</span> 
-                        <label title="Thu cũ đổi mới lên đời điện thoại Android &amp; Máy tính bảng, tiết kiệm tới 20 triệu đồng">
-                            Thu cũ đổi mới lên đời điện thoại A...
-                        </label> 
-                        <strong class="text-orange"> VÀ 12 KM KHÁC</strong>
-                    </div>
-                </div>
-            </div>
-            )
-        })}
+                        <Label labelText={el?.discountEvent} />
+                        <div className={cx("info")}>
+                            <a href={el?.urlProduct} className={cx("title")} title={el?.productName}>{el?.productName}</a>
+                            <span className={cx("price")}>
+                                <strong>{el?.promotionalPrice}đ</strong>{" "}
+                                <strike>{el?.originalPrice}₫</strike>
+                            </span>
+                            {el?.priceGoesUp &&
+                                <div style={{ paddingTop: "8px", fontStyle: "italic", textAlign: "left", }}>
+                                    <label>Giá lên đời từ: <strong className={cx("text-red")}>{el?.priceGoesUp} ₫</strong></label>
+                                </div>
+                            }
+                            <div class="note">
+                                <span class="bag">KM</span>
+                                <label title="Thu cũ đổi mới lên đời điện thoại Android &amp; Máy tính bảng, tiết kiệm tới 20 triệu đồng">
+                                    Thu cũ đổi mới lên đời điện thoại A...
+                                </label>
+                                <strong class="text-orange"> VÀ 12 KM KHÁC</strong>
+                            </div>
+                        </div>
+                    </a>
+                )
+            })}
         </div>
     )
 }

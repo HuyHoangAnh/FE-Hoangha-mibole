@@ -11,3 +11,7 @@ export const signInApi = (name,address,email,phoneNumber,password) => {
     // return axios.post(`${import.meta.env.VITE_BACK_END_HOST}${APIEndPoint.API_ACCOUNT}`, {name,address,email,phoneNumber, password});
     return axios.post(`http://localhost:8000${APIEndPoint.API_ACCOUNT}`, {name,address,email,phoneNumber, password});
 }
+
+export const getUserDetailApi = (id) => {
+    return axios.get(`http://localhost:8000${APIEndPoint.API_ACCOUNT}/${id}`)
+}

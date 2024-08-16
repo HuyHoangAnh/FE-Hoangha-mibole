@@ -9,12 +9,13 @@ const cx = classNames.bind(styles)
 
 const Header = (props) => {
     //! Props
-    const {listHeader} = props
+    const { listHeader } = props
     //! State
     const navigate = useNavigate();
     //! Function
     const handleLogout = () => {
         localStorage.removeItem("token");
+        localStorage.removeItem("userId");
         navigate("/account")
         toast.success("Log out success")
     }
@@ -27,20 +28,25 @@ const Header = (props) => {
             </a>
         )
     })
-    
+
     return (
         <header>
             <div className={cx('top-navigation')}>
                 <div className={cx('container-header')}>
                     {showListHeader}
                     {localStorage.getItem("token") ?
-                    <a onClick={handleLogout} style={{cursor: "pointer"}}>
-                        Logout
-                    </a>
-                    : 
-                    <a href='/account' style={{cursor: "pointer"}}>
-                        Login
-                    </a>
+                        <a onClick={handleLogout}>
+                            Logout
+                        </a>
+                        :
+                        <a href='/account'>
+                            Login
+                        </a>
+                    }
+                    {
+                        localStorage.getItem("userId") && <a href={`/profile/${localStorage.getItem("userId")}`}>
+                            Profile
+                        </a>
                     }
                     <div className={cx('header-search')}>
                         <LogoSearch color={"#fff"} />
