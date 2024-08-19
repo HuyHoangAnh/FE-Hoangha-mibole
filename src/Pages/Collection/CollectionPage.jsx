@@ -1,6 +1,5 @@
-import React from "react";
-import Header from "../../Component/Header/Header";
-import { listBanner, listHeader } from "../../constant";
+import React, { useState } from "react";
+import { listBanner } from "../../constant";
 import classNames from "classnames/bind";
 import styles from "./CollectionPage.module.scss";
 import Banner from "../../Component/Banner/Banner";
@@ -13,6 +12,8 @@ import styled from "styled-components";
 import logoApple from "../../assets/logo-apple.webp"
 import logoSamsung from "../../assets/logo-samsung.webp"
 import logoXiaomi from "../../assets/logo-xiaomi.webp"
+import { useQuery } from "@tanstack/react-query";
+import { getProductApi } from "../../services/Product";
 const listBannerImage = [
   {
     id: 1,
@@ -52,12 +53,36 @@ const listBannerImage = [
 const cx = classNames.bind(styles);
 
 const CollectionPage = () => {
+  // const { id: idProduct } = useParams();
+  //! Props
+  //! State
+  // const [ productData, setProductData ] = useState("")
+  // const { refetch, data } = useQuery({
+  //   queryKey: ["product-data"],
+  //   queryFn: () => getProductDetailApi(idProduct),
+  //   enabled: true,
+  //   onSuccess: (response) => { 
+  //     console.log("checked",response);
+      
+  //     setProductData(response?.data);
+  //   },
+  // });
+  const [ productData, setProductData ] = useState("")
+  //! Function
+  const { refetch, data } = useQuery({
+    queryKey: ["product-data"],
+    queryFn: getProductApi,
+    enabled: true,
+    onSuccess: (response) => { 
+      setProductData(response?.data);
+    },
+  });
+  //! Effect
+  //! Render
   return (
     <div>
       <SWrapCollectionPage>
-        <Header listHeader={listHeader} />
         <div className={cx("container")}>
-          <div style={{ height: "52px" }}></div>
           <div className={cx("collection-container")}>
             {/* <NewHeader /> */}
             <Banner listBanner={listBanner} />
@@ -73,8 +98,8 @@ const CollectionPage = () => {
               })}
             </div>
             <div className={cx("list-container")}>
-              <FilterCollection />
-              <ProductCollection />
+              {/* <FilterCollection /> */}
+              <ProductCollection productData={productData}/>
             </div>
             <div className={cx("list-container")}>
               <TextCollections />

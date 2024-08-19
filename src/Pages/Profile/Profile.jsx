@@ -30,8 +30,6 @@ const Profile = () => {
   return (
     <div className="profile-container">
     <div>
-      <Header listHeader={listHeader} />
-      <div style={{ height: "52px" }}></div>
       <Social />
     </div>
   </div>

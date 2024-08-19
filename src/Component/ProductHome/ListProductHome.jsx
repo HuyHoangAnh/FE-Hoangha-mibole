@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import IPhone11 from "../../assets/iphone-11.webp"
 import classNames from 'classnames/bind'
 import styles from './ProductHome.module.scss'
@@ -9,14 +9,15 @@ const cx = classNames.bind(styles)
 
 const ListProductHome = (props) => {
     //! Props
-    const { listProductApple, productData } = props
+    const { productData, companyProduct } = props
     //! State
     //! Function
     //! Effect
     //! Render
+    const listProduct = productData?.data?.filter(item => item.productCompany === companyProduct);
     return (
         <div className={cx('col-content lts-product')}>
-            {productData?.data?.map((el, index) => {
+            {listProduct?.map((el, index) => {
                 return (
                     <a href={`/product/${el?._id}`} className={cx('item')} key={index}>
                         <div className={cx('img')}>

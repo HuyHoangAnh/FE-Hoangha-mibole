@@ -44,10 +44,15 @@ export const listBanner = [
 
 export const listHeader = [
     {
+        id: 0,
+        title: 'Trang chủ',
+        icon: IconPhone,
+        url: '/',
+    },{
         id: 1,
         title: 'Điện thoại',
         icon: IconPhone,
-        url: '/collections',
+        url: '/collections?productType=phone',
     },
     {
         id: 2,
@@ -104,45 +109,45 @@ export const listAppleReseller = [
         id: 1,
         header: "Apple authorised Reseller",
         linkCollection: [
-            {
-                id: 1,
-                title: "Macbook",
-                url: "/laptop/macbook",
-            },
-            {
-                id: 2,
-                title: "iPhone",
-                url: "/dien-thoai-di-dong/iphone",
-            },
-            {
-                id: 3,
-                title: "iPad",
-                url: "/tablet/ipad",
-            },
-            {
-                id: 4,
-                title: "Apple Watch",
-                url: "/dong-ho/apple-watch",
-            },
-            {
-                id: 5,
-                title: "AirPods",
-                url: "/tai-nghe/apple-airpods/airpods",
-            },
-            {
-                id: 6,
-                title: "EarPods",
-                url: "/tai-nghe/apple-airpods/earpods",
-            },
-            {
-                id: 7,
-                title: "Phụ kiện chính hãng Apple",
-                url: "/phu-kien/phu-kien-apple/phu-kien-chinh-hang-apple",
-            },
+            // {
+            //     id: 1,
+            //     title: "Macbook",
+            //     url: "/laptop/macbook",
+            // },
+            // {
+            //     id: 2,
+            //     title: "iPhone",
+            //     url: "/dien-thoai-di-dong/iphone",
+            // },
+            // {
+            //     id: 3,
+            //     title: "iPad",
+            //     url: "/tablet/ipad",
+            // },
+            // {
+            //     id: 4,
+            //     title: "Apple Watch",
+            //     url: "/dong-ho/apple-watch",
+            // },
+            // {
+            //     id: 5,
+            //     title: "AirPods",
+            //     url: "/tai-nghe/apple-airpods/airpods",
+            // },
+            // {
+            //     id: 6,
+            //     title: "EarPods",
+            //     url: "/tai-nghe/apple-airpods/earpods",
+            // },
+            // {
+            //     id: 7,
+            //     title: "Phụ kiện chính hãng Apple",
+            //     url: "/phu-kien/phu-kien-apple/phu-kien-chinh-hang-apple",
+            // },
             {
                 id: 8,
                 title: "Xem tất cả",
-                url: "/apple",
+                url: "/collections",
                 class: "actived"
             }
         ],

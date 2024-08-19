@@ -10,7 +10,7 @@ const cx = classNames.bind(styles);
 
 const ProductHome = (props) => {
   //! Props
-  const { listAppleReseller,productData } = props;
+  const { listAppleReseller,productData, companyProduct } = props;
   //! State
   //! Function
   //! Effect
@@ -19,8 +19,8 @@ const ProductHome = (props) => {
     <SWrapProductHome>
       <div className={cx("container")}>
         <div className={cx("box-product-home box-home")}>
-          <HeaderProduct listAppleReseller={listAppleReseller} />
-          <ListProductHome listProductApple={listProductApple} productData={productData}/>
+          <HeaderProduct listAppleReseller={listAppleReseller} companyProduct={companyProduct} />
+          <ListProductHome listProductApple={listProductApple} productData={productData} companyProduct={companyProduct}/>
         </div>
       </div>
     </SWrapProductHome>

@@ -1,12 +1,36 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./ProductCollection.module.scss";
 import classNames from "classnames/bind";
 import { ListProductCollections } from "../../constant/indexProduct";
 import styled from "styled-components";
+import { useQuery } from "@tanstack/react-query";
+import { getProductCollectionCompanyApi, getProductCollectionTypeApi } from "../../services/Product";
+import { useLocation, useParams } from "react-router";
 
 const cx = classNames.bind(styles);
 
-const ProductCollection = () => {
+const ProductCollection = (props) => {
+  const location = useLocation();
+  const params = new URLSearchParams(location.search);
+  const company = params.get("productCompany") ? params.get("productCompany") : params.get("productType");
+  //! Props
+  const {productData} = props
+  //! State
+  const [ productCollections, setProductCollections ] = useState("")
+  const { refetch, data } = useQuery({
+    queryKey: ["product-collection-data"],
+    queryFn: () => params.get("productCompany") ? getProductCollectionCompanyApi(company) : getProductCollectionTypeApi(company),
+    enabled: true,
+    onSuccess: (response) => { 
+      setProductCollections(response?.data);
+    },
+  });
+  //! Function
+  //! Effect
+  useEffect(() => {
+    refetch && refetch();
+  }, [])
+  //! Render
   return (
     <SWrapProductCollection>
       <div className={cx("v5-list-items")}>
@@ -19,26 +43,27 @@ const ProductCollection = () => {
           </p>
         </div>
         <div className={cx("v5-grid-items")}>
-          {ListProductCollections.map((el) => {
+          {productCollections?.data?.map((el) => {
+            console.log("/product/${el?.productName}",`/product/${el?.productName}`);
             return (
               <div className={cx("v5-item")} key={el?.id}>
                 <a
-                  title={el?.title}
-                  href="/dien-thoai/samsung-galaxy-z-fold6"
+                  title={el?.productName}
+                  href={`/product/${el?.productName}`}
                   class="img"
                 >
-                  <img alt={el?.title} src={el?.urlImg} />
+                  <img alt={el?.productName} src={el?.urlImg} />
                 </a>
                 <h3>
                   <a
-                    title={el?.title}
-                    href="/dien-thoai/samsung-galaxy-z-fold6"
+                    title={el?.productName}
+                    href={`/product/${el?._id}`}
                   >
-                    {el?.title}
+                    {el?.productName}
                   </a>
                 </h3>
                 <div class="price">
-                  <strong>{el?.price}</strong>
+                  <strong>{el?.promotionalPrice}</strong>
                 </div>
                 <div class="promotion-list">
                   <div>

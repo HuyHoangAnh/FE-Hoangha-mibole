@@ -37,13 +37,11 @@ const HomePage = () => {
   return (
     <div className={cx("home-container")}>
       <div>
-        <Header listHeader={listHeader} />
         {/* <NewHeader /> */}
-        <div style={{ height: "52px" }}></div>
         <Banner listBanner={listBanner} />
         <BannerImage />
         {/* <FlashSale /> */}
-        <ProductHome listAppleReseller={listAppleReseller} productData={productData} />
+        <ProductHome listAppleReseller={listAppleReseller} productData={productData} companyProduct="Apple" />
         <Social />
         <BannerAds />
       </div>

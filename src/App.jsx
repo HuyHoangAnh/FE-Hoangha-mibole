@@ -7,7 +7,7 @@ import { publicRoutes } from "./Router/Router.jsx";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-
+import { listHeader } from "./constant"
 const cx = classNames.bind(styles);
 function App() {
   const queryClient = new QueryClient();
@@ -16,6 +16,8 @@ function App() {
       <Router>
         <QueryClientProvider client={queryClient}>
           <div className={cx("App")}>
+          <Header listHeader={listHeader} />
+          <div style={{ height: "52px" }}></div>
             <Routes>
               {publicRoutes.map((route, index) => {
                 const Page = route.component;

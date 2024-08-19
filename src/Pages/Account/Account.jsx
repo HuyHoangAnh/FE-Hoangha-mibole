@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import Header from "../../Component/Header/Header";
-import { listHeader } from "../../constant";
 import styled from "styled-components";
 import Social from "../../common/Social";
 import LoginBg from "../../assets/login-bg.png";
@@ -18,9 +16,7 @@ const Account = () => {
   //! Render
   return (
     <SWrapAccount>
-      <Header listHeader={listHeader} />
       {/* <NewHeader /> */}
-      <div style={{ height: "52px" }}></div>
       <div className="container">
         <div className="login-form">
           <div className="login-bg">

@@ -12,37 +12,54 @@ const Product = () => {
   const { id: idProduct } = useParams();
   //! Props
   //! State
-  const [ productData, setProductData ] = useState("")
+  const [productData, setProductData] = useState("");
   const { refetch, data } = useQuery({
     queryKey: ["product-data"],
     queryFn: () => getProductDetailApi(idProduct),
     enabled: true,
-    onSuccess: (response) => { 
-      console.log("checked",response);
-      
-      setProductData(response?.data);
+    onSuccess: (response) => {
+      setProductData(response?.data?.product);
     },
   });
   //! Function
   //! Effect
   useEffect(() => {
     refetch && refetch();
-  }, [])
+  }, []);
   //! Render
+  console.log("productData", productData);
+  console.log("data", data);
+
   return (
     <SWrapProduct>
-      <Header listHeader={listHeader} />
       {/* <NewHeader /> */}
-      <div style={{ height: "52px" }}></div>
       <div className="container">
         <div className="product-detail">
           <div className="product-name">
-            <h1>Điện thoại iPhone 11 (64GB) - Chính hãng VN/A</h1>
+            <h1>Điện thoại {productData?.productName} - Chính hãng</h1>
           </div>
         </div>
         <div className="product-detail-info">
-          <div className="detail-info-left"></div>
-          <div className="detail-info-right"></div>
+          <div className="detail-info-left">
+            <div className="_image">
+              {/* <img src={productData?.images} alt={productData?.productName} /> */}
+              <img
+                src="http://localhost:5173/src/assets/iphone-11.webp"
+                alt={productData?.productName}
+              />
+            </div>
+          </div>
+          <div className="detail-info-right">
+            <div className="store">
+              <p>Hoàng Hà mobile</p>
+            </div>
+            <div className="_title">{productData?.productName}</div>
+            <div className="_price">
+              <div className="promotional-price">{productData?.promotionalPrice} đ</div>
+              <div className="original-price">{productData?.originalPrice} đ</div>
+              <div className="_label">{productData?.discountEvent}%</div>
+            </div>
+          </div>
         </div>
       </div>
     </SWrapProduct>
@@ -53,18 +70,48 @@ export default Product;
 
 export const SWrapProduct = styled.div`
   .container {
-    justify-content: start;
     flex-direction: column;
+    max-width: 1200px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    color: #000;
+    gap: 50px;
     .product-detail .product-name h1 {
       font-size: 20px;
       font-weight: 700;
       line-height: 24.2px;
       text-align: left;
-      color: #000;
     }
   }
   .box-detail-info {
     display: flex;
     gap: 12px;
+  }
+  .product-detail-info {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    .detail-info-left,
+    .detail-info-right {
+      max-width: 600px;
+      width: 100%;
+    }
+  }
+  .detail-info-left {
+    ._image {
+      border: solid 1px #000;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      height: 430px;
+    }
+  }
+  .detail-info-right{
+    ._price{
+      display: flex;
+      gap: 15px;
+    }
   }
 `;
