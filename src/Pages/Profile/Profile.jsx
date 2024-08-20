@@ -20,15 +20,22 @@ const Profile = () => {
       setProfileUser(response?.data?.user);
     },
   });
-  const [nameProfile, setNameProfile] = useState(profileUser?.name);
-  const [emailProfile, setEmailProfile] = useState(profileUser?.email);
-  const [addressProfile, setAddressProfile] = useState(profileUser?.address);
-  const [phoneNumberProfile, setPhoneNumberProfile] = useState(profileUser?.phoneNumber);
+  const [nameProfile, setNameProfile] = useState("");
+  const [emailProfile, setEmailProfile] = useState("");
+  const [addressProfile, setAddressProfile] = useState("");
+  const [phoneNumberProfile, setPhoneNumberProfile] = useState("");
   const [password, setPassword] = useState("");
   //! Function
   const handleSave = async () => {
     setIsChangeProfile(false)
-    let res = await pathUserDetailApi(profileUser?._id, profileUser);
+    const updatedProfileUser = {
+      ...profileUser,
+      address: addressProfile,
+      email: emailProfile,
+      phoneNumber: phoneNumberProfile,
+      name: nameProfile,
+    };
+    let res = await pathUserDetailApi(profileUser?._id, updatedProfileUser);
     console.log("checked",res);
   };
   //! Effect
