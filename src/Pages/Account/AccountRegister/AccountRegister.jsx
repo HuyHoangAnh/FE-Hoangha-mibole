@@ -15,13 +15,7 @@ const AccountRegister = (props) => {
   //! Function
   const handleRegister = async () => {
     setIsLoading(true);
-    // if (!account || !password) {
-    //   toast.error("Email/Password is required!");
-    //   return;
-    // }
     let res = await signInApi(name, address, email, phoneNumber, password);
-    console.log("checked", res);
-
     if (res && res?.data?.token) {
       localStorage.setItem("token", res?.data?.token);
       navigate("/");
