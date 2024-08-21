@@ -20,13 +20,19 @@ import {
   XMarkIcon,
 } from '@heroicons/react/24/outline'
 import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from '@heroicons/react/20/solid'
+import { toast } from 'react-toastify'
+import { useNavigate } from 'react-router'
+import Apple from "../../assets/Logo/Apple.jpeg"
+import Samsung from "../../assets/Logo/Samsung.png"
+import OPPO from "../../assets/Logo/OPPO.png"
+import Redmi from "../../assets/Logo/Redmi.png"
 
 const products = [
-  { name: 'Analytics', description: 'Get a better understanding of your traffic', href: '#', icon: ChartPieIcon },
-  { name: 'Engagement', description: 'Speak directly to your customers', href: '#', icon: CursorArrowRaysIcon },
-  { name: 'Security', description: 'Your customers’ data will be safe and secure', href: '#', icon: FingerPrintIcon },
-  { name: 'Integrations', description: 'Connect with third-party tools', href: '#', icon: SquaresPlusIcon },
-  { name: 'Automations', description: 'Build strategic funnels that will convert', href: '#', icon: ArrowPathIcon },
+  { name: 'Apple', description: 'Get a better understanding of your traffic', href: '/collections?productCompany=Apple', icon: ChartPieIcon, ImageDataUrl: Apple },
+  { name: 'Samsung', description: 'Speak directly to your customers', href: '/collections?productCompany=Samsung', icon: CursorArrowRaysIcon, ImageDataUrl: Samsung },
+  { name: 'OPPO', description: 'Your customers’ data will be safe and secure', href: '/collections?productCompany=OPPO', icon: FingerPrintIcon, ImageDataUrl: OPPO },
+  { name: 'Redmi', description: 'Connect with third-party tools', href: '/collections?productCompany=Redmi', icon: SquaresPlusIcon, ImageDataUrl: Redmi },
+  // { name: 'Automations', description: 'Build strategic funnels that will convert', href: '/collections?productCompany=Apple', icon: ArrowPathIcon, ImageDataUrl: Apple },
 ]
 const callsToAction = [
   { name: 'Watch demo', href: '#', icon: PlayCircleIcon },
@@ -34,13 +40,26 @@ const callsToAction = [
 ]
 
 const NewHeader = () => {
+  //! Props
+  //! State
+  const [isOpenUserMenu,setIsOpenUserMenu] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-
+  const navigate = useNavigate();
+  //! Function
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("userId");
+    localStorage.removeItem("checkedAdmin");
+    navigate("/account")
+    toast.success("Log out success")
+  }
+  //! Effect
+  //! Render
   return (
-    <header className="bg-white">
+    <header className="bg-emerald-900" style={{position: "fixed", width: "100%"}}>
       <nav aria-label="Global" className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8">
         <div className="flex lg:flex-1">
-          <a href="#" className="-m-1.5 p-1.5">
+          <a href="/" className="-m-1.5 p-1.5">
             <span className="sr-only">Your Company</span>
             <img alt="" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" className="h-8 w-auto" />
           </a>
@@ -57,8 +76,8 @@ const NewHeader = () => {
         </div>
         <PopoverGroup className="hidden lg:flex lg:gap-x-12">
           <Popover className="relative">
-            <PopoverButton className="flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900">
-              Product
+            <PopoverButton className="flex items-center gap-x-1 text-lg font-semibold leading-6 text-white">
+              Điện thoại
               <ChevronDownIcon aria-hidden="true" className="h-5 w-5 flex-none text-gray-400" />
             </PopoverButton>
 
@@ -70,10 +89,11 @@ const NewHeader = () => {
                 {products.map((item) => (
                   <div
                     key={item.name}
-                    className="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm leading-6 hover:bg-gray-50"
+                    className="group relative flex items-center gap-x-6 rounded-lg p-4 text-lg leading-6 hover:bg-gray-50"
                   >
                     <div className="flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
-                      <item.icon aria-hidden="true" className="h-6 w-6 text-gray-600 group-hover:text-indigo-600" />
+                      {/* <item.icon aria-hidden="true" className="h-6 w-6 text-gray-600 group-hover:text-indigo-600" /> */}
+                      <img src={item?.ImageDataUrl} alt={item.name} />
                     </div>
                     <div className="flex-auto">
                       <a href={item.href} className="block font-semibold text-gray-900">
@@ -85,35 +105,52 @@ const NewHeader = () => {
                   </div>
                 ))}
               </div>
-              <div className="grid grid-cols-2 divide-x divide-gray-900/5 bg-gray-50">
+              {/* <div className="grid grid-cols-2 divide-x divide-gray-900/5 bg-gray-50">
                 {callsToAction.map((item) => (
                   <a
                     key={item.name}
                     href={item.href}
-                    className="flex items-center justify-center gap-x-2.5 p-3 text-sm font-semibold leading-6 text-gray-900 hover:bg-gray-100"
+                    className="flex items-center justify-center gap-x-2.5 p-3 text-lg font-semibold leading-6 text-gray-900 hover:bg-gray-100"
                   >
                     <item.icon aria-hidden="true" className="h-5 w-5 flex-none text-gray-400" />
                     {item.name}
                   </a>
                 ))}
-              </div>
+              </div> */}
             </PopoverPanel>
           </Popover>
 
-          <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
+          <a href="#" className="text-lg font-semibold leading-6 text-white">
             Features
           </a>
-          <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
+          <a href="#" className="text-lg font-semibold leading-6 text-white">
             Marketplace
           </a>
-          <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
+          <a href="#" className="text-lg font-semibold leading-6 text-white">
             Company
           </a>
         </PopoverGroup>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
-            Log in <span aria-hidden="true">&rarr;</span>
-          </a>
+          {localStorage.getItem("token") ?
+        <div class="relative ml-3">
+          <div>
+            <button onClick={() => setIsOpenUserMenu((active) => !active)} type="button" class="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+              <span class="absolute -inset-1.5"></span>
+              <span class="sr-only">Open user menu</span>
+              <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />
+            </button>
+          </div>
+         {isOpenUserMenu &&
+           <div class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
+            <a href={`/profile/${localStorage.getItem("userId")}`} class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Thông tin cá nhân</a>
+            <a onClick={handleLogout} style={{ cursor: "pointer" }} class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-2">Đăng xuất</a>
+          </div>}
+        </div>
+            :
+            <a href="/account" className="text-lg font-semibold leading-6 text-white">
+              Đăng nhập <span aria-hidden="true">&rarr;</span>
+            </a>
+          }
         </div>
       </nav>
       <Dialog open={mobileMenuOpen} onClose={setMobileMenuOpen} className="lg:hidden">
@@ -142,16 +179,16 @@ const NewHeader = () => {
               <div className="space-y-2 py-6">
                 <Disclosure as="div" className="-mx-3">
                   <DisclosureButton className="group flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
-                    Product
+                    Điện thoại
                     <ChevronDownIcon aria-hidden="true" className="h-5 w-5 flex-none group-data-[open]:rotate-180" />
                   </DisclosureButton>
                   <DisclosurePanel className="mt-2 space-y-2">
-                    {[...products, ...callsToAction].map((item) => (
+                    {[...products].map((item) => (
                       <DisclosureButton
                         key={item.name}
                         as="a"
                         href={item.href}
-                        className="block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                        className="block rounded-lg py-2 pl-6 pr-3 text-lg font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                       >
                         {item.name}
                       </DisclosureButton>

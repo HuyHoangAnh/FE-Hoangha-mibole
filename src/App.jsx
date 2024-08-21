@@ -19,9 +19,9 @@ function App() {
       <Router>
         <QueryClientProvider client={queryClient}>
           <div className={cx("App")}>
-          <Header listHeader={listHeader} />
-          <div style={{ height: "52px" }}></div>
+          {/* <Header listHeader={listHeader} /> */}
           <NewHeader />
+          <div style={{ height: "70px" }}></div>
             <Routes>
               {publicRoutes.map((route, index) => {
                 const Page = route.component;
