@@ -80,8 +80,8 @@ const Product = () => {
             </div>
             <div class="box-order product-action">
               <div class="box-order-btn">
-                <a title="Mua ngay" data-sku="MTV03VN" href="/" class="add-buy order-btn btnQuickOrder"><strong>MUA NGAY</strong><span> (Giao tận nhà hoặc nhận tại cửa hàng)</span></a>
-                <a title="Thêm vào giỏ hàng" data-sku="MTV03VN" href="/" class="add-buy add-cart">
+                <a title="Mua ngay" data-sku="MTV03VN" href="#" class="add-buy order-btn btnQuickOrder"><strong>MUA NGAY</strong><span> (Giao tận nhà hoặc nhận tại cửa hàng)</span></a>
+                <a title="Thêm vào giỏ hàng" data-sku="MTV03VN" href="#" class="add-buy add-cart">
                   <i class="icon-Cart1SolidOn"></i>
                   <label>Thêm giỏ hàng</label>
                 </a>
