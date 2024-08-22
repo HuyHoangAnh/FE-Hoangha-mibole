@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { listBanner } from "../../constant";
 import classNames from "classnames/bind";
 import styles from "./CollectionPage.module.scss";
@@ -73,6 +73,9 @@ const CollectionPage = () => {
     },
   });
   //! Effect
+  useEffect(() => {
+    refetch && refetch();
+  }, [])
   //! Render
   return (
     <div>

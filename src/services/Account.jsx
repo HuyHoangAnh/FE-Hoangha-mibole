@@ -29,3 +29,10 @@ export const pathUserDetailApi = (id, data) => {
 export const getAllUserApi = () => {
     return axios.get(`http://localhost:8000${APIEndPoint.API_ACCOUNT}`)
 }
+
+export const deleteUserDetailApi = (id, token) => {
+    return axios.delete(`http://localhost:8000${APIEndPoint.API_ACCOUNT}/${id}`, {
+        headers: { Authorization: `Bearer ${token}` },
+    }
+    )
+}

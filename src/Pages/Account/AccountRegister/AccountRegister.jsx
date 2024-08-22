@@ -16,9 +16,9 @@ const AccountRegister = (props) => {
   const handleRegister = async () => {
     setIsLoading(true);
     let res = await signInApi(name, address, email, phoneNumber, password);
-    if (res && res?.data?.token) {
-      localStorage.setItem("token", res?.data?.token);
-      navigate("/");
+    if (res?.data?.msg === "Create user successful") {
+      setIsOpenSignIn(true);
+      setIsOpenSignUp(false);
     } else {
       if (res && res?.data?.statusCode === 401) {
         toast.error(res?.data?.msg);

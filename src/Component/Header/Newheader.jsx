@@ -34,15 +34,15 @@ const products = [
   { name: 'Redmi', description: 'Connect with third-party tools', href: '/collections?productCompany=Redmi', icon: SquaresPlusIcon, ImageDataUrl: Redmi },
   // { name: 'Automations', description: 'Build strategic funnels that will convert', href: '/collections?productCompany=Apple', icon: ArrowPathIcon, ImageDataUrl: Apple },
 ]
-const callsToAction = [
-  { name: 'Watch demo', href: '#', icon: PlayCircleIcon },
-  { name: 'Contact sales', href: '#', icon: PhoneIcon },
+const Admin = [
+  { name: 'Thông tin khách hàng', href: '/admin/user', icon: PlayCircleIcon },
+  { name: 'Danh sách sản phẩm', href: '/admin/product', icon: PhoneIcon },
 ]
 
 const NewHeader = () => {
   //! Props
   //! State
-  const [isOpenUserMenu,setIsOpenUserMenu] = useState(false)
+  const [isOpenUserMenu, setIsOpenUserMenu] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const navigate = useNavigate();
   //! Function
@@ -56,7 +56,7 @@ const NewHeader = () => {
   //! Effect
   //! Render
   return (
-    <header className="bg-emerald-900" style={{position: "fixed", width: "100%", zIndex: "999"}}>
+    <header className="bg-emerald-900" style={{ position: "fixed", width: "100%", zIndex: "999" }}>
       <nav aria-label="Global" className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8">
         <div className="flex lg:flex-1">
           <a href="/" className="-m-1.5 p-1.5">
@@ -80,7 +80,6 @@ const NewHeader = () => {
               Điện thoại
               <ChevronDownIcon aria-hidden="true" className="h-5 w-5 flex-none text-gray-400" />
             </PopoverButton>
-
             <PopoverPanel
               transition
               className="absolute -left-8 top-full z-10 mt-3 w-screen max-w-md overflow-hidden rounded-3xl bg-white shadow-lg ring-1 ring-gray-900/5 transition data-[closed]:translate-y-1 data-[closed]:opacity-0 data-[enter]:duration-200 data-[leave]:duration-150 data-[enter]:ease-out data-[leave]:ease-in"
@@ -129,26 +128,51 @@ const NewHeader = () => {
           <a href="#" className="text-lg font-semibold leading-6 text-white">
             Company
           </a>
-          <a href="/admin" className="text-lg font-semibold leading-6 text-white">
-            Admin
-          </a>
+          {localStorage.getItem("checkedAdmin") === "admin" &&
+            <Popover className="relative">
+              <PopoverButton className="flex items-center gap-x-1 text-lg font-semibold leading-6 text-white">
+                Admin
+                <ChevronDownIcon aria-hidden="true" className="h-5 w-5 flex-none text-gray-400" />
+              </PopoverButton>
+              <PopoverPanel
+                transition
+                className="absolute -left-8 top-full z-10 mt-3 w-56 max-w-md overflow-hidden rounded-3xl bg-white shadow-lg ring-1 ring-gray-900/5 transition data-[closed]:translate-y-1 data-[closed]:opacity-0 data-[enter]:duration-200 data-[leave]:duration-150 data-[enter]:ease-out data-[leave]:ease-in"
+              >
+                <div className="p-4">
+                  {Admin.map((item) => (
+                    <div
+                      key={item.name}
+                      className="group relative flex items-center gap-x-6 rounded-lg p-4 text-lg leading-6 hover:bg-gray-50"
+                    >
+                      <div className="flex-auto">
+                        <a href={item.href} className="block font-semibold text-gray-900">
+                          {item.name}
+                          <span className="absolute inset-0" />
+                        </a>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </PopoverPanel>
+            </Popover>
+          }
         </PopoverGroup>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
           {localStorage.getItem("token") ?
-        <div class="relative ml-3">
-          <div>
-            <button onClick={() => setIsOpenUserMenu((active) => !active)} type="button" class="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
-              <span class="absolute -inset-1.5"></span>
-              <span class="sr-only">Open user menu</span>
-              <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />
-            </button>
-          </div>
-         {isOpenUserMenu &&
-           <div class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
-            <a href={`/profile/${localStorage.getItem("userId")}`} class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Thông tin cá nhân</a>
-            <a onClick={handleLogout} style={{ cursor: "pointer" }} class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-2">Đăng xuất</a>
-          </div>}
-        </div>
+            <div className="relative ml-3">
+              <div>
+                <button onClick={() => setIsOpenUserMenu((active) => !active)} type="button" className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+                  <span className="absolute -inset-1.5"></span>
+                  <span className="sr-only">Open user menu</span>
+                  <img className="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />
+                </button>
+              </div>
+              {isOpenUserMenu &&
+                <div className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
+                  <a href={`/profile/${localStorage.getItem("userId")}`} className="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Thông tin cá nhân</a>
+                  <a onClick={handleLogout} style={{ cursor: "pointer" }} className="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-2">Đăng xuất</a>
+                </div>}
+            </div>
             :
             <a href="/account" className="text-lg font-semibold leading-6 text-white">
               Đăng nhập <span aria-hidden="true">&rarr;</span>
@@ -216,12 +240,26 @@ const NewHeader = () => {
                 >
                   Company
                 </a>
-                <a
-                  href="/admin"
-                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                >
-                  Amin
-                </a>
+                {localStorage.getItem("checkedAdmin") === "admin" &&
+                  <Disclosure as="div" className="-mx-3">
+                    <DisclosureButton className="group flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
+                      Admin
+                      <ChevronDownIcon aria-hidden="true" className="h-5 w-5 flex-none group-data-[open]:rotate-180" />
+                    </DisclosureButton>
+                    <DisclosurePanel className="mt-2 space-y-2">
+                      {[...Admin].map((item) => (
+                        <DisclosureButton
+                          key={item.name}
+                          as="a"
+                          href={item.href}
+                          className="block rounded-lg py-2 pl-6 pr-3 text-lg font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                        >
+                          {item.name}
+                        </DisclosureButton>
+                      ))}
+                    </DisclosurePanel>
+                  </Disclosure>
+                }
               </div>
               <div className="py-6">
                 <a
