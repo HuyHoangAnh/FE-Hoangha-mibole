@@ -36,7 +36,6 @@ const Profile = () => {
       name: nameProfile,
     };
     let res = await pathUserDetailApi(profileUser?._id, updatedProfileUser);
-    console.log("checked",res);
   };
   //! Effect
   useEffect(() => {

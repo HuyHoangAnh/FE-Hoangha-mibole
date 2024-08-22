@@ -21,17 +21,20 @@ const cx = classNames.bind(styles);
 const HomePage = () => {
   //! Props
   //! State
-  const [ productData, setProductData ] = useState("")
+  const [productData, setProductData] = useState("");
   //! Function
   const { refetch, data } = useQuery({
-    queryKey: ["product-data"],
+    queryKey: ["get-product-data"],
     queryFn: getProductApi,
-    enabled: true,
-    onSuccess: (response) => { 
+    enabled: false,
+    onSuccess: (response) => {
       setProductData(response?.data);
     },
   });
   //! Effect
+  useEffect(() => {
+    refetch && refetch();
+  }, []);
   //! Render
 
   return (
@@ -41,7 +44,11 @@ const HomePage = () => {
         <Banner listBanner={listBanner} />
         <BannerImage />
         {/* <FlashSale /> */}
-        <ProductHome listAppleReseller={listAppleReseller} productData={productData} companyProduct="Apple" />
+        <ProductHome
+          listAppleReseller={listAppleReseller}
+          productData={productData}
+          companyProduct="Apple"
+        />
         <Social />
         <BannerAds />
       </div>

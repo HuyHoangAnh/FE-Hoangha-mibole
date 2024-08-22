@@ -56,7 +56,7 @@ const NewHeader = () => {
   //! Effect
   //! Render
   return (
-    <header className="bg-emerald-900" style={{position: "fixed", width: "100%"}}>
+    <header className="bg-emerald-900" style={{position: "fixed", width: "100%", zIndex: "999"}}>
       <nav aria-label="Global" className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8">
         <div className="flex lg:flex-1">
           <a href="/" className="-m-1.5 p-1.5">
@@ -128,6 +128,9 @@ const NewHeader = () => {
           </a>
           <a href="#" className="text-lg font-semibold leading-6 text-white">
             Company
+          </a>
+          <a href="/admin" className="text-lg font-semibold leading-6 text-white">
+            Admin
           </a>
         </PopoverGroup>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
@@ -212,6 +215,12 @@ const NewHeader = () => {
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
                   Company
+                </a>
+                <a
+                  href="/admin"
+                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                >
+                  Amin
                 </a>
               </div>
               <div className="py-6">
