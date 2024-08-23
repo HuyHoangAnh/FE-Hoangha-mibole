@@ -126,7 +126,7 @@ const CollectionPage = () => {
           </div>
         </div>
       </SWrapCollectionPage>
-      <Social />
+      {/* <Social /> */}
     </div>
   );
 };

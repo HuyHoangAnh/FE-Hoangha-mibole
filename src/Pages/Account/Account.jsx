@@ -26,7 +26,7 @@ const Account = () => {
           {isOpenSignUp && <AccountRegister setIsOpenSignIn={setIsOpenSignIn} setIsOpenSignUp={setIsOpenSignUp} />}
         </div>
       </div>
-      <Social />
+      {/* <Social /> */}
     </SWrapAccount>
   );
 };

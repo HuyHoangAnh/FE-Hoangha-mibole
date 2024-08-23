@@ -10,6 +10,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { listHeader } from "./constant"
 import './index.css';
 import NewHeader from "./Component/Header/Newheader.jsx";
+import Footer from "./Component/Footer/Footer.jsx";
 
 const cx = classNames.bind(styles);
 function App() {
@@ -32,8 +33,8 @@ function App() {
             </Routes>
             <ToastContainer />
           </div>
+          <Footer />
         </QueryClientProvider>
-        ,
       </Router>
     </>
   );

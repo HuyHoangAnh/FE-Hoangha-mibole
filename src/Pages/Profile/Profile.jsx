@@ -50,7 +50,7 @@ const Profile = () => {
     <SWrapProfile>
       <div className="profile-container">
         <div>
-          <Social />
+          {/* <Social /> */}
         </div>
         <div className="container">
           <h1 className="title">Hồ sơ của tôi</h1>

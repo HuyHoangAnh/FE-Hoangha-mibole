@@ -15,7 +15,6 @@ import NewHeader from "../../Component/Header/Newheader";
 import styled from "styled-components";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { getProductApi } from "../../services/Product";
-import UploadWidget from "../../common/UploadWidget"
 const cx = classNames.bind(styles);
 
 const HomePage = () => {
@@ -44,13 +43,12 @@ const HomePage = () => {
         <Banner listBanner={listBanner} />
         <BannerImage />
         {/* <FlashSale /> */}
-        <UploadWidget />
         <ProductHome
           listAppleReseller={listAppleReseller}
           productData={productData}
           companyProduct="Apple"
         />
-        <Social />
+        {/* <Social /> */}
         <BannerAds />
       </div>
     </div>

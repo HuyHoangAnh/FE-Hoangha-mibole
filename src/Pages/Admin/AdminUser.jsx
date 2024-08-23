@@ -2,7 +2,6 @@ import { useQuery } from "@tanstack/react-query";
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { getAllUserApi } from "../../services/Account";
-import { getProductApi } from "../../services/Product"
 import ModalUser from "../../Component/Modal/ModalUser";
 
 const AdminUser = () => {
@@ -28,7 +27,7 @@ const AdminUser = () => {
     <SWarpAdmin>
       {localStorage.getItem("checkedAdmin") === "admin"
         ? <div>
-          <ModalUser isOpenModal={isOpenModal} setIsOpenModal={setIsOpenModal} allUserData={allUserData} refetch={refetch}/>
+          <ModalUser isOpenModal={isOpenModal} setIsOpenModal={setIsOpenModal} allUserData={allUserData} />
           <div className="container">
             <div className="form">
               <h1 className="text-4xl">Thông tin khách hàng</h1>

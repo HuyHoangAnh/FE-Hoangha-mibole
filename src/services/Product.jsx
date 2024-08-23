@@ -16,3 +16,14 @@ export const getProductCollectionCompanyApi = (company) => {
 export const getProductCollectionTypeApi = (company) => {
     return axios.get(`http://localhost:8000${APIEndPoint.API_PRODUCT}?productType=${company}`)
 }
+
+export const deleteProductDetailApi = (id, token) => {
+    return axios.delete(`http://localhost:8000${APIEndPoint.API_PRODUCT}/${id}`, {
+        headers: { Authorization: `Bearer ${token}` },
+    }
+    )
+}
+
+export const createProductApi = (amount, productName, productType,promotionalPrice, productCompany, originalPrice, priceGoesUp, images, discountEvent) => {
+    return axios.post(`http://localhost:8000${APIEndPoint.API_PRODUCT}`, {amount, productName, productType, promotionalPrice, productCompany, originalPrice, priceGoesUp, images, discountEvent});
+}

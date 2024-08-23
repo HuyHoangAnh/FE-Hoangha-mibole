@@ -2,16 +2,22 @@ import { useQuery } from '@tanstack/react-query';
 import React, { Fragment, useEffect, useState } from 'react'
 import { getProductApi } from '../../services/Product';
 import styled from 'styled-components';
+import ModalProduct from "../../Component/Modal/ModalProduct"
+import ModalCreateProduct from '../../Component/Modal/ModalCreateProduct';
+
 
 const AdminProduct = () => {
   //! Props
   //! State
+  const [isOpenModal, setIsOpenModal] = useState(false);
+  const [isOpenCreateProduct, setIsOpenCreateProduct] = useState(false);
   const [productData, setProductData] = useState("");
   const { refetch } = useQuery({
     queryKey: ["all-product-data"],
     queryFn: getProductApi,
     enabled: true,
     onSuccess: (response) => {
+      console.log("response",response);
       setProductData(response?.data);
     },
   });
@@ -21,16 +27,16 @@ const AdminProduct = () => {
     refetch && refetch();
   }, []);
   //! Render
-  console.log("productData",productData);
-  
   return (
     <SWarpAdmin>
     {localStorage.getItem("checkedAdmin") === "admin"
       ? <div>
-        {/* <ModalUser isOpenModal={isOpenModal} setIsOpenModal={setIsOpenModal} allUserData={allUserData} refetch={refetch}/> */}
+        <ModalProduct isOpenModal={isOpenModal} setIsOpenModal={setIsOpenModal} productData={productData}/>
+        <ModalCreateProduct isOpenCreateProduct={isOpenCreateProduct} setIsOpenCreateProduct={setIsOpenCreateProduct}/>
         <div className="container">
           <div className="form">
             <h1 className="text-4xl">Danh sách sản phẩm</h1>
+            <button className='w-60 h-16 bg-emerald-600 text-white' onClick={() => setIsOpenCreateProduct(true)}>Thêm sản phẩm</button>
             <ul role="list" className="divide-y divide-gray-100">
               {productData?.data?.map((el) => {
                 return (
@@ -53,7 +59,7 @@ const AdminProduct = () => {
                     </div>
                     <div className="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
                       <button onClick={() => {
-                        localStorage.setItem("checkIdUser", el?._id)
+                        localStorage.setItem("checkIdProduct", el?._id)
                         setIsOpenModal(true)
                       }} className="text-sm leading-6 text-gray-900">Thông tin chi tiết</button>
                     </div>

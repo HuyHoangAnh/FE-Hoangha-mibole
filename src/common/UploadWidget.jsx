@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 
-const UploadWidget = () => {
+const UploadWidget = (props) => {
+  const {title} = props
   const cloudinaryRef = useRef();
   const widgetRef = useRef();
 
@@ -15,8 +16,10 @@ const UploadWidget = () => {
         (error, result) => {
           if (error) {
             console.error("Upload Widget Error:", error);
-          } else {
-            console.log(result);
+          } else if (result.event === "success") {
+            const imageUrl = result.info.secure_url;
+            console.log("Image URL:", imageUrl);
+            // Bạn có thể gửi URL này đến API của bạn hoặc sử dụng cho mục đích khác
           }
         }
       );
@@ -25,7 +28,7 @@ const UploadWidget = () => {
 
   return (
     <button onClick={() => widgetRef.current.open()}>
-      Upload
+      {title}
     </button>
   );
 };

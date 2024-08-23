@@ -26,7 +26,6 @@ const ProductHome = (props) => {
     </SWrapProductHome>
   );
 };
-
 export default ProductHome;
 
 export const SWrapProductHome = styled.div`

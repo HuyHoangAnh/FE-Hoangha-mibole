@@ -19,6 +19,7 @@ const AccountRegister = (props) => {
     if (res?.data?.msg === "Create user successful") {
       setIsOpenSignIn(true);
       setIsOpenSignUp(false);
+      toast.success("Registered successfully")
     } else {
       if (res && res?.data?.statusCode === 401) {
         toast.error(res?.data?.msg);
