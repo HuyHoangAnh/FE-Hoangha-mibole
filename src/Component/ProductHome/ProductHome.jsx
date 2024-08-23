@@ -54,7 +54,7 @@ export const SWrapProductHome = styled.div`
     width: 370px;
   }
   .box-home .header h4 {
-    padding: 5px 60px 6px 35px;
+    padding: 8px 35px 6px 35px;
     margin: 0 0 0 60px;
     // background: #00483d;
     color: #fff;

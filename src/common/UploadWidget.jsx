@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 
 const UploadWidget = (props) => {
-  const {title} = props
+  const { title, setImages, imagesUpdate, setImagesUpdate } = props
   const cloudinaryRef = useRef();
   const widgetRef = useRef();
 
@@ -18,7 +18,18 @@ const UploadWidget = (props) => {
             console.error("Upload Widget Error:", error);
           } else if (result.event === "success") {
             const imageUrl = result.info.secure_url;
-            console.log("Image URL:", imageUrl);
+            setImages({
+              uid: "",
+              name: "ImageProduct",
+              url: imageUrl,
+              status: "Active",
+            })
+            setImagesUpdate({
+              uid: "",
+              name: "ImageProduct",
+              url: imageUrl,
+              status: "Active",
+            })
             // Bạn có thể gửi URL này đến API của bạn hoặc sử dụng cho mục đích khác
           }
         }
