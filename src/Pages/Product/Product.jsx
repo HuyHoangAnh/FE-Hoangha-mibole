@@ -14,7 +14,7 @@ const Product = () => {
   //! State
   const [quantity, setQuantity] = useState(1)
   const [productData, setProductData] = useState("");
-  const { refetch, data } = useQuery({
+  const { refetch } = useQuery({
     queryKey: ["product-data"],
     queryFn: () => getProductDetailApi(idProduct),
     enabled: true,
@@ -28,8 +28,6 @@ const Product = () => {
     refetch && refetch();
   }, []);
   //! Render
-  console.log("productData", productData);
-  console.log("quantity", quantity);
 
   return (
     <SWrapProduct>
@@ -43,11 +41,14 @@ const Product = () => {
         <div className="product-detail-info">
           <div className="detail-info-left">
             <div className="_image">
-              {/* <img src={productData?.images} alt={productData?.productName} /> */}
+            {productData?.images?.map((el) => {
+              return(
               <img
-                src="http://localhost:5173/src/assets/iphone-11.webp"
+                src={el?.url}
                 alt={productData?.productName}
               />
+              )
+            })}
             </div>
           </div>
           <div className="detail-info-right">
@@ -63,6 +64,7 @@ const Product = () => {
             <div className="_quantity">
               <p>Số lượng</p>
               <input
+              className="bg-white"
                 type="number"
                 min="1"
                 value={quantity}

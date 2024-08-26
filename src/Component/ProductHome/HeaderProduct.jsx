@@ -1,31 +1,30 @@
-import React from 'react'
-import classNames from 'classnames/bind'
-import styles from './ProductHome.module.scss'
+import React from "react";
+import classNames from "classnames/bind";
+import styles from "./ProductHome.module.scss";
 
-const cx = classNames.bind(styles)
-
+const cx = classNames.bind(styles);
 
 const HeaderProduct = (props) => {
   //! Props
-  const { listAppleReseller, companyProduct } = props
+  const { listAppleReseller, companyProduct } = props;
   //! State
   //! Function
   //! Effect
   //! Render
   return (
-    <div className={cx('header-container')}>
-      <div className={cx('header')}> 
+    <div className={cx("header-container")}>
+      <div className={cx("header")}>
         <h4>
-        {/* {listAppleReseller.map((el) => {
+          {/* {listAppleReseller.map((el) => {
           return <a id={el.id}>
             {el?.header}
           </a>
         })} */}
-        {companyProduct === "Apple" && "Apple authorised Reseller"}
+          {companyProduct} authorised Reseller
         </h4>
       </div>
       <div class="other-link">
-      {/* {listAppleReseller.map((el) => {
+        {/* {listAppleReseller.map((el) => {
           return <>
             {el?.linkCollection.map((index) => {
               return (
@@ -36,12 +35,15 @@ const HeaderProduct = (props) => {
             })}
           </>
         })} */}
-        <a href={`/collections?productCompany=${companyProduct}`} className={cx(`actived`)}>
-                  Xem tất cả
-                </a>
+        <a
+          href={`/collections?productCompany=${companyProduct}`}
+          className={cx(`actived`)}
+        >
+          Xem tất cả
+        </a>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default HeaderProduct
+export default HeaderProduct;

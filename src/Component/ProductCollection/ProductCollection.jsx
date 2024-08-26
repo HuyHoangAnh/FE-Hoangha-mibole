@@ -44,15 +44,15 @@ const ProductCollection = (props) => {
         </div>
         <div className={cx("v5-grid-items")}>
           {productCollections?.data?.map((el) => {
-            console.log("/product/${el?.productName}",`/product/${el?.productName}`);
             return (
               <div className={cx("v5-item")} key={el?.id}>
                 <a
                   title={el?.productName}
-                  href={`/product/${el?.productName}`}
+                  href={`/product/${el?._id}`}
                   class="img"
+                  style={{display: "flex", justifyContent: "center"}}
                 >
-                  <img alt={el?.productName} src={el?.urlImg} />
+                  <img alt={el?.productName} src={el?.images[0]?.url} />
                 </a>
                 <h3>
                   <a

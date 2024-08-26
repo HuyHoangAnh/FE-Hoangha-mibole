@@ -44,9 +44,20 @@ const HomePage = () => {
         <BannerImage />
         {/* <FlashSale /> */}
         <ProductHome
-          listAppleReseller={listAppleReseller}
           productData={productData}
           companyProduct="Apple"
+        />
+        <ProductHome
+          productData={productData}
+          companyProduct="Samsung"
+        />
+        <ProductHome
+          productData={productData}
+          companyProduct="OPPO"
+        />
+        <ProductHome
+          productData={productData}
+          companyProduct="Redmi"
         />
         {/* <Social /> */}
         <BannerAds />
