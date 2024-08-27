@@ -49,3 +49,7 @@ export const pathProductDetailApi = (id, data) => {
         }
     )
 }
+
+export const searchProductApi = (name) => {
+    return axios.get(`http://localhost:8000${APIEndPoint.API_PRODUCT}?name=${name}`)
+}

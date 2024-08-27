@@ -48,20 +48,8 @@ const listBannerImage = [
 const cx = classNames.bind(styles);
 
 const CollectionPage = () => {
-  // const { id: idProduct } = useParams();
   //! Props
   //! State
-  // const [ productData, setProductData ] = useState("")
-  // const { refetch, data } = useQuery({
-  //   queryKey: ["product-data"],
-  //   queryFn: () => getProductDetailApi(idProduct),
-  //   enabled: true,
-  //   onSuccess: (response) => { 
-  //     console.log("checked",response);
-
-  //     setProductData(response?.data);
-  //   },
-  // });
   const [productData, setProductData] = useState("")
   //! Function
   const { refetch, data } = useQuery({

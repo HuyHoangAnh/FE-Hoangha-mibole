@@ -119,11 +119,11 @@ const NewHeader = () => {
             </PopoverPanel>
           </Popover>
 
-          <a href="#" className="text-lg font-semibold leading-6 text-white">
-            Features
+          <a href="/collections" className="text-lg font-semibold leading-6 text-white">
+            Tất cả sản phẩm
           </a>
-          <a href="#" className="text-lg font-semibold leading-6 text-white">
-            Marketplace
+          <a href="/search" className="text-lg font-semibold leading-6 text-white">
+            TÌm kiếm
           </a>
           <a href="#" className="text-lg font-semibold leading-6 text-white">
             Company

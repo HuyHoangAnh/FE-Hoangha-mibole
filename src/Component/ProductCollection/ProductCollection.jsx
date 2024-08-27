@@ -43,16 +43,16 @@ const ProductCollection = (props) => {
           </p>
         </div>
         <div className={cx("v5-grid-items")}>
-          {productCollections?.data?.map((el) => {
+          {(company ? productCollections?.data : productData?.data)?.map((el) => {
             return (
               <div className={cx("v5-item")} key={el?.id}>
                 <a
                   title={el?.productName}
                   href={`/product/${el?._id}`}
-                  class="img"
-                  style={{display: "flex", justifyContent: "center"}}
+                  className={cx("_img")}
+                  style={{display: "flex", justifyContent: "center", maxHeight: "200px"}}
                 >
-                  <img alt={el?.productName} src={el?.images[0]?.url} />
+                  <img alt={el?.productName} src={el?.images[0]?.url} height={"100%"}/>
                 </a>
                 <h3>
                   <a
@@ -62,10 +62,10 @@ const ProductCollection = (props) => {
                     {el?.productName}
                   </a>
                 </h3>
-                <div class="price">
+                <div className="price">
                   <strong>{el?.promotionalPrice}</strong>
                 </div>
-                <div class="promotion-list">
+                <div className="promotion-list">
                   <div>
                     <label>KM</label>
                     <span title="Tặng PMH 2.000.000đ hoặc Thu cũ điện thoại gập hỗ trợ thêm 4 triệu đồng/Thu cũ điện thoại khác hỗ trợ tới 3 triệu đồng (Xem chi tiết)">
@@ -78,7 +78,7 @@ const ProductCollection = (props) => {
                       Giảm thêm 1.000.000đ qua QR Code
                     </span>
                   </div>
-                  <div class="more">+ 11 Ưu đãi khác</div>
+                  <div className="more">+ 11 Ưu đãi khác</div>
                 </div>
               </div>
             );
@@ -125,9 +125,11 @@ export const SWrapProductCollection = styled.div`
       flex-direction: column;
       justify-content: start;
       justify-items: start;
-      a.img {
+      a._img {
         display: block;
         margin: 0 auto;
+        width: 160px;
+        height: 160px;
       }
       h3 {
         padding: 0;

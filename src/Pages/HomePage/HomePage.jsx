@@ -15,6 +15,7 @@ import NewHeader from "../../Component/Header/Newheader";
 import styled from "styled-components";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { getProductApi } from "../../services/Product";
+import Search from "../../common/Search";
 const cx = classNames.bind(styles);
 
 const HomePage = () => {
@@ -61,6 +62,7 @@ const HomePage = () => {
         />
         {/* <Social /> */}
         <BannerAds />
+        <Search />
       </div>
     </div>
   );
