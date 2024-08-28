@@ -11,8 +11,6 @@ const Cart = () => {
         setProductAddToCart(JSON.parse(localStorage.getItem("cart")))
     }, [])
     //! Render
-    console.log("checked", productAddToCart);
-    
   return (
     <SWrapCart>
         <div className="container">

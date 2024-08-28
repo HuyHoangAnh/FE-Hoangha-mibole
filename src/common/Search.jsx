@@ -47,8 +47,6 @@ const Search = () => {
   }, [name]);
 
   //! Render
-  console.log("checked", results);
-
   return (
     <div>
       <input

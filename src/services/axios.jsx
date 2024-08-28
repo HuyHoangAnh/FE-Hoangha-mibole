@@ -16,7 +16,6 @@ const instance = axios.create({
 instance.interceptors.response.use(function(response) {
   return response?.data ? response?.data : {statusCode: response?.status}; 
 }, function (error) {
-  console.log("checked", error);
   return Promise.reject(error)
 });
 
