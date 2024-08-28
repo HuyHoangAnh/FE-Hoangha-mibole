@@ -1,57 +1,25 @@
-import { useQuery } from '@tanstack/react-query';
-import React, { Fragment, useEffect, useState } from 'react'
-import { getProductApi } from '../../services/Product';
-import styled from 'styled-components';
-import ModalProduct from "../../Component/Modal/ModalProduct"
-import ModalCreateProduct from '../../Component/Modal/ModalCreateProduct';
-import CardFooter from '../../common/CardFooter';
+import React, { useEffect, useState } from 'react'
+import styled from 'styled-components'
 
-const AdminProduct = () => {
-  //! Props
-  //! State
-  const [isOpenModal, setIsOpenModal] = useState(false);
-  const [isOpenCreateProduct, setIsOpenCreateProduct] = useState(false);
-  const [query, setQuery] = useState({
-    page: 1,
-    totalPages: 0,
-  });
-  const [productData, setProductData] = useState("");
-  const fetchProductData = async (page) => {
-    const response = await getProductApi(page);
-    return response;
-  };
-
-  const { refetch } = useQuery({
-    queryKey: ["all-product-data", query.page],
-    queryFn: () => fetchProductData(query.page),
-    enabled: true,
-    onSuccess: (response) => {
-      setQuery({
-        page: response?.data?.paging?.currentPage,
-        totalPages: response?.data?.paging?.totalPage
-      });
-      setProductData(response?.data);
-    },
-  });
-  //! Function
-  //! Effect
-  useEffect(() => {
-    refetch && refetch();
-  }, [query.page]);
-  //! Render
-
+const Cart = () => {
+    //! Props
+    //! State
+    const [productAddToCart, setProductAddToCart] = useState([])
+    //! Function
+    //! Effect
+    useEffect(() => {
+        setProductAddToCart(JSON.parse(localStorage.getItem("cart")))
+    }, [])
+    //! Render
+    console.log("checked", productAddToCart);
+    
   return (
-    <SWarpAdmin>
-      {localStorage.getItem("checkedAdmin") === "admin"
-        ? <div>
-          <ModalProduct isOpenModal={isOpenModal} setIsOpenModal={setIsOpenModal} productData={productData} />
-          <ModalCreateProduct isOpenCreateProduct={isOpenCreateProduct} setIsOpenCreateProduct={setIsOpenCreateProduct} />
-          <div className="container">
+    <SWrapCart>
+        <div className="container">
             <div className="form">
               <h1 className="text-4xl">Danh sách sản phẩm</h1>
-              <button className='w-60 h-16 bg-emerald-600 text-white' onClick={() => setIsOpenCreateProduct(true)}>Thêm sản phẩm</button>
               <ul role="list" className="divide-y divide-gray-100">
-                {productData?.data?.map((el) => {
+                {productAddToCart?.map((el) => {
                   return (
                     <li id={el?.id} className="flex justify-between gap-x-6 py-5">
                       <div className="flex min-w-0 gap-x-4">
@@ -86,40 +54,15 @@ const AdminProduct = () => {
                   )
                 })}
               </ul>
-              <CardFooter productData={productData} setQuery={setQuery} query={query} />
+              {/* <CardFooter productData={productData} setQuery={setQuery} query={query} /> */}
             </div>
           </div>
-        </div>
-        : <main className="grid min-h-full place-items-center bg-white px-6 py-24 sm:py-32 lg:px-8">
-          <div className="text-center">
-            <h1 className="text-4xl font-semibold text-indigo-600">404</h1>
-            <h1 className="mt-4 text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl">Page not found</h1>
-            <p className="mt-6 text-base leading-7 text-gray-600">Sorry, we couldn’t find the page you’re looking for.</p>
-            <div className="mt-10 flex items-center justify-center gap-x-6">
-              <a href="/" className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Go back home</a>
-            </div>
-          </div>
-        </main>
-      }
-    </SWarpAdmin>
+    </SWrapCart>
   )
 }
 
-export default AdminProduct
+export default Cart
 
-export const SWarpAdmin = styled.div`
-  color: #000;
-  .container {
-    max-width: 1200px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    margin: 0 auto;
-    .form{
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-  }
-`;
+export const SWrapCart = styled.div`
+
+`

@@ -12,8 +12,8 @@ export const getProductApi = (page = 1) => {
       },
     });
   };
-export const getProductDetailApi = (id) => {
-    return axios.get(`http://localhost:8000${APIEndPoint.API_PRODUCT}/${id}`)
+export const getProductDetailApi = (id, company) => {
+    return axios.get(`http://localhost:8000${APIEndPoint.API_PRODUCT}/${id}?productCompany=${company}`)
 }
 export const getProductCollectionCompanyApi = (company) => {
     return axios.get(`http://localhost:8000${APIEndPoint.API_PRODUCT}?productCompany=${company}`)

@@ -52,7 +52,7 @@ const Search = () => {
               <div className="v5-item" key={el?.id}>
                 <a
                   title={el?.productName}
-                  href={`/product/${el?._id}`}
+                  href={`/product/${el?._id}?productCompany=${el?.productCompany}`}
                   className="_img"
                   style={{
                     display: "flex",
@@ -67,7 +67,7 @@ const Search = () => {
                   />
                 </a>
                 <h3>
-                  <a title={el?.productName} href={`/product/${el?._id}`}>
+                  <a title={el?.productName} href={`/product/${el?._id}?productCompany=${el?.productCompany}`}>
                     {el?.productName}
                   </a>
                 </h3>

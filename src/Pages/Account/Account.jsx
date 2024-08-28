@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import Social from "../../common/Social";
 import LoginBg from "../../assets/login-bg.png";
 import AccountRegister from "./AccountRegister/AccountRegister";
 import AccountLogIn from "./AccountLogIn/AccountLogIn";
-import NewHeader from "../../Component/Header/Newheader";
 
 const Account = () => {
   //! Props

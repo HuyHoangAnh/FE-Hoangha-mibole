@@ -123,7 +123,7 @@ const NewHeader = () => {
             Tất cả sản phẩm
           </a>
           <a href="/search" className="text-lg font-semibold leading-6 text-white">
-            TÌm kiếm
+            Tìm kiếm
           </a>
           <a href="#" className="text-lg font-semibold leading-6 text-white">
             Company
@@ -223,16 +223,16 @@ const NewHeader = () => {
                   </DisclosurePanel>
                 </Disclosure>
                 <a
-                  href="#"
+                  href="/collections"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
-                  Features
+                  Tất cả sản phẩm
                 </a>
                 <a
-                  href="#"
+                  href="/search"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
-                  Marketplace
+                  Tìm kiếm
                 </a>
                 <a
                   href="#"

@@ -5,33 +5,187 @@ import styled from "styled-components";
 import Banner from "../../Component/Banner/Banner";
 import NewHeader from "../../Component/Header/Newheader";
 import { useQuery } from "@tanstack/react-query";
-import { getProductApi, getProductDetailApi } from "../../services/Product";
-import { useParams } from "react-router";
+import { getProductCollectionCompanyApi, getProductDetailApi } from "../../services/Product";
+import { useLocation, useParams } from "react-router";
+import ProductAlsoLike from "./ProductAlsoLike/ProductAlsoLike";
+
+// const Product = () => {
+//   const { id: idProduct } = useParams();
+//   const location = useLocation();
+//   const params = new URLSearchParams(location.search);
+//   const company = params.get("productCompany")
+//   //! Props
+//   //! State
+//   const [quantity, setQuantity] = useState(1)
+//   const [productData, setProductData] = useState({});
+//   const { refetch } = useQuery({
+//     queryKey: ["product-data"],
+//     queryFn: () => getProductDetailApi(idProduct),
+//     enabled: false,
+//     onSuccess: (response) => {
+//       setProductData(response?.data?.product);
+//     },
+//   });
+//   const [ listProductAlsoLike, setListProductAlsoLike ] = useState([])
+//   const { refetch: refetchListProduct, data } = useQuery({
+//     queryKey: ["list-product-data"],
+//     queryFn: () => params.get("productCompany") ? getProductCollectionCompanyApi(company) : getProductCollectionTypeApi(company),
+//     enabled: true,
+//     onSuccess: (response) => { 
+//       setListProductAlsoLike(response?.data?.data);
+//     },
+//   });
+//   //! Function
+//   const filteredProducts = listProductAlsoLike.filter(product => product._id !== productData._id);
+
+//   //! Effect
+//   useEffect(() => {
+//     refetch && refetch();
+//     refetchListProduct && refetchListProduct();
+//   }, []);
+//   //! Render
+//   // const sortedProducts = listProductAlsoLike.sort((a, b) => a.promotionalPrice - b.promotionalPrice);
+//   return (
+//     <SWrapProduct>
+//       {/* <NewHeader /> */}
+//       <div className="container">
+//         <div className="product-detail">
+//           <div className="product-name">
+//             <h1>Trang chi tiết sản phẩm</h1>
+//           </div>
+//         </div>
+//         <div className="product-detail-info">
+//           <div className="detail-info-left">
+//             <div className="_image">
+//             {productData?.images?.map((el) => {
+//               return(
+//               <img
+//                 src={el?.url}
+//                 alt={productData?.productName}
+//               />
+//               )
+//             })}
+//             </div>
+//           </div>
+//           <div className="detail-info-right">
+//             <div className="store">
+//               <p>Sản phẩm giảm giá</p>
+//             </div>
+//             <div className="_title">{productData?.productName}</div>
+//             <div className="_price">
+//               <strike className="original-price">{productData?.originalPrice} đ</strike>
+//               <strong className="promotional-price">{productData?.promotionalPrice} đ</strong>
+//               <div className="_label">{productData?.discountEvent}%</div>
+//             </div>
+//             <div className="_quantity">
+//               <p>Số lượng</p>
+//               <input
+//               className="bg-white"
+//                 type="number"
+//                 min="1"
+//                 value={quantity}
+//                 onInput={(e) => {
+//                   let value = e.target.value > 0 && e.target.value;
+//                   // Kiểm tra nếu giá trị bắt đầu bằng 0 và độ dài lớn hơn 1
+//                   if (value.length > 1 && value.startsWith("0")) {
+//                     value = value.slice(1); // Bỏ đi số 0 ở đầu
+//                   }
+//                   e.target.value = value; // Cập nhật giá trị
+//                   setQuantity(value)
+//                 }}
+//                 inputMode="numeric"
+//               />
+//             </div>
+//             <div class="box-order product-action">
+//               <div class="box-order-btn">
+//                 <a title="Mua ngay" data-sku="MTV03VN" href="#" class="add-buy order-btn btnQuickOrder"><strong>MUA NGAY</strong><span> (Giao tận nhà hoặc nhận tại cửa hàng)</span></a>
+//                 <a title="Thêm vào giỏ hàng" data-sku="MTV03VN" href="#" class="add-buy add-cart">
+//                   <i class="icon-Cart1SolidOn"></i>
+//                   <label>Thêm giỏ hàng</label>
+//                 </a>
+//               </div>
+//               {/* <div class="box-order-btn">
+//                 <a title="Mua trả góp" href="/tra-gop/dien-thoai-di-dong/apple-iphone-15-pro-128gb-chinh-hang-vn-a" class="add-buy btn-installment order-btn btnInstallment"><strong>TRẢ GÓP 0%</strong><span>Trả trước chỉ từ 0₫</span></a>
+//                 <a title="Mua trả góp" href="/tra-gop/dien-thoai-di-dong/apple-iphone-15-pro-128gb-chinh-hang-vn-a?color=123&amp;prepay=5&amp;month=5&amp;card=True#estimation" class="add-buy btn-installment order-btn btnInstallment"><strong>TRẢ GÓP QUA THẺ</strong><span>(Visa, Mastercard, JCB)</span></a>
+//               </div> */}
+//             </div>
+//           </div>
+//         </div>
+//         <ProductAlsoLike filteredProducts={filteredProducts} />
+//       </div>
+//     </SWrapProduct>
+//   );
+// };
 
 const Product = () => {
   const { id: idProduct } = useParams();
-  //! Props
+  const location = useLocation();
+  const params = new URLSearchParams(location.search);
+  const company = params.get("productCompany");
+  
   //! State
-  const [quantity, setQuantity] = useState(1)
-  const [productData, setProductData] = useState("");
+  const [quantity, setQuantity] = useState(1);
+  const [productData, setProductData] = useState({});
+  
   const { refetch } = useQuery({
     queryKey: ["product-data"],
     queryFn: () => getProductDetailApi(idProduct),
-    enabled: true,
+    enabled: false,
     onSuccess: (response) => {
       setProductData(response?.data?.product);
     },
   });
+
+  const [listProductAlsoLike, setListProductAlsoLike] = useState([]);
+  
+  const { refetch: refetchListProduct, data } = useQuery({
+    queryKey: ["list-product-data"],
+    queryFn: () =>
+      params.get("productCompany")
+        ? getProductCollectionCompanyApi(company)
+        : getProductCollectionTypeApi(company),
+    enabled: true,
+    onSuccess: (response) => {
+      setListProductAlsoLike(response?.data?.data);
+    },
+  });
+
   //! Function
+  const filteredProducts = listProductAlsoLike.filter(
+    (product) => product._id !== productData._id
+  );
+
+  // Function to update localStorage cart
+  const updateCart = (product, quantity) => {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const index = cart.findIndex((item) => item._id === product._id);
+
+    if (index >= 0) {
+      // Update quantity if product already exists in cart
+      cart[index].quantity += quantity;
+    } else {
+      // Add new product to cart
+      cart.push({ ...product, quantity });
+    }
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+  };
+
+  // Handle Add to Cart
+  const handleAddToCart = () => {
+    updateCart(productData, parseInt(quantity));
+    alert("Sản phẩm đã được thêm vào giỏ hàng!");
+  };
+
   //! Effect
   useEffect(() => {
     refetch && refetch();
+    refetchListProduct && refetchListProduct();
   }, []);
-  //! Render
 
+  //! Render
   return (
     <SWrapProduct>
-      {/* <NewHeader /> */}
       <div className="container">
         <div className="product-detail">
           <div className="product-name">
@@ -41,14 +195,9 @@ const Product = () => {
         <div className="product-detail-info">
           <div className="detail-info-left">
             <div className="_image">
-            {productData?.images?.map((el) => {
-              return(
-              <img
-                src={el?.url}
-                alt={productData?.productName}
-              />
-              )
-            })}
+              {productData?.images?.map((el) => (
+                <img src={el?.url} alt={productData?.productName} />
+              ))}
             </div>
           </div>
           <div className="detail-info-right">
@@ -57,48 +206,63 @@ const Product = () => {
             </div>
             <div className="_title">{productData?.productName}</div>
             <div className="_price">
-              <strike className="original-price">{productData?.originalPrice} đ</strike>
-              <strong className="promotional-price">{productData?.promotionalPrice} đ</strong>
+              <strike className="original-price">
+                {productData?.originalPrice} đ
+              </strike>
+              <strong className="promotional-price">
+                {productData?.promotionalPrice} đ
+              </strong>
               <div className="_label">{productData?.discountEvent}%</div>
             </div>
             <div className="_quantity">
               <p>Số lượng</p>
               <input
-              className="bg-white"
+                className="bg-white"
                 type="number"
                 min="1"
                 value={quantity}
                 onInput={(e) => {
                   let value = e.target.value > 0 && e.target.value;
-                  // Kiểm tra nếu giá trị bắt đầu bằng 0 và độ dài lớn hơn 1
                   if (value.length > 1 && value.startsWith("0")) {
-                    value = value.slice(1); // Bỏ đi số 0 ở đầu
+                    value = value.slice(1);
                   }
-                  e.target.value = value; // Cập nhật giá trị
-                  setQuantity(value)
+                  e.target.value = value;
+                  setQuantity(value);
                 }}
                 inputMode="numeric"
               />
             </div>
-            <div class="box-order product-action">
-              <div class="box-order-btn">
-                <a title="Mua ngay" data-sku="MTV03VN" href="#" class="add-buy order-btn btnQuickOrder"><strong>MUA NGAY</strong><span> (Giao tận nhà hoặc nhận tại cửa hàng)</span></a>
-                <a title="Thêm vào giỏ hàng" data-sku="MTV03VN" href="#" class="add-buy add-cart">
-                  <i class="icon-Cart1SolidOn"></i>
+            <div className="box-order product-action">
+              <div className="box-order-btn">
+                <a
+                  title="Mua ngay"
+                  data-sku="MTV03VN"
+                  href="#"
+                  className="add-buy order-btn btnQuickOrder"
+                >
+                  <strong>MUA NGAY</strong>
+                  <span> (Giao tận nhà hoặc nhận tại cửa hàng)</span>
+                </a>
+                <a
+                  title="Thêm vào giỏ hàng"
+                  data-sku="MTV03VN"
+                  href="#"
+                  className="add-buy add-cart"
+                  onClick={handleAddToCart}  // Add onClick handler here
+                >
+                  <i className="icon-Cart1SolidOn"></i>
                   <label>Thêm giỏ hàng</label>
                 </a>
               </div>
-              {/* <div class="box-order-btn">
-                <a title="Mua trả góp" href="/tra-gop/dien-thoai-di-dong/apple-iphone-15-pro-128gb-chinh-hang-vn-a" class="add-buy btn-installment order-btn btnInstallment"><strong>TRẢ GÓP 0%</strong><span>Trả trước chỉ từ 0₫</span></a>
-                <a title="Mua trả góp" href="/tra-gop/dien-thoai-di-dong/apple-iphone-15-pro-128gb-chinh-hang-vn-a?color=123&amp;prepay=5&amp;month=5&amp;card=True#estimation" class="add-buy btn-installment order-btn btnInstallment"><strong>TRẢ GÓP QUA THẺ</strong><span>(Visa, Mastercard, JCB)</span></a>
-              </div> */}
             </div>
           </div>
         </div>
+        <ProductAlsoLike filteredProducts={filteredProducts} />
       </div>
     </SWrapProduct>
   );
 };
+
 
 export default Product;
 

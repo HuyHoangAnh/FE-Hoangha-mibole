@@ -1,21 +1,13 @@
 import React, { useEffect, useState } from "react";
 import Banner from "../../Component/Banner/Banner";
-import Header from "../../Component/Header/Header";
 import BannerImage from "../../Component/Banner/BannerImage";
-import FlashSale from "./FlashSale/FlashSale";
 import ProductHome from "../../Component/ProductHome/ProductHome";
 import { listBanner } from "../../constant";
-import { listHeader } from "../../constant";
-import { listAppleReseller } from "../../constant";
 import classNames from "classnames/bind";
 import styles from "./HomePage.module.scss";
 import BannerAds from "../../Component/Banner/BannerAds";
-import Social from "../../common/Social";
-import NewHeader from "../../Component/Header/Newheader";
-import styled from "styled-components";
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import { getProductApi } from "../../services/Product";
-import Search from "../../common/Search";
 const cx = classNames.bind(styles);
 
 const HomePage = () => {
@@ -62,7 +54,6 @@ const HomePage = () => {
         />
         {/* <Social /> */}
         <BannerAds />
-        <Search />
       </div>
     </div>
   );

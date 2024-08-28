@@ -8,11 +8,21 @@ export const getOrderApi = (token) => {
     });
 }
 
-export const postOrderApi = () => {
+export const postOrderApi = (token) => {
     // return axios.post(`${import.meta.env.VITE_BACK_END_HOST}${APIEndPoint.API_ACCOUNT}/login`, {email, password});
-    return axios.post(`http://localhost:8000${APIEndPoint.API_ORDER}`);
+    return axios.post(`http://localhost:8000${APIEndPoint.API_ORDER}`,{
+        headers: {Authorization: `Bearer ${token}`}
+    });
 }
 
-export const getOrderDetailApi = (id) => {
-    return axios.get(`http://localhost:8000${APIEndPoint.API_ORDER}/${id}`);
+export const getOrderDetailApi = (id, token) => {
+    return axios.get(`http://localhost:8000${APIEndPoint.API_ORDER}/${id}`,{
+        headers: {Authorization: `Bearer ${token}`}
+    });
+}
+
+export const deleteOrderDetailApi = (id, token) => {
+    return axios.delete(`http://localhost:8000${APIEndPoint.API_ORDER}/${id}`,{
+        headers: {Authorization: `Bearer ${token}`}
+    });
 }

@@ -48,7 +48,7 @@ const ProductCollection = (props) => {
               <div className={cx("v5-item")} key={el?.id}>
                 <a
                   title={el?.productName}
-                  href={`/product/${el?._id}`}
+                  href={`/product/${el?._id}?productCompany=${el?.productCompany}`}
                   className={cx("_img")}
                   style={{display: "flex", justifyContent: "center", maxHeight: "200px"}}
                 >
@@ -57,7 +57,7 @@ const ProductCollection = (props) => {
                 <h3>
                   <a
                     title={el?.productName}
-                    href={`/product/${el?._id}`}
+                    href={`/product/${el?._id}?productCompany=${el?.productCompany}`}
                   >
                     {el?.productName}
                   </a>

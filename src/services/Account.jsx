@@ -22,7 +22,7 @@ export const pathUserDetailApi = (id, data) => {
             email: data?.email,
             name: data?.name,
             phoneNumber: data?.phoneNumber,
-
+            password: data?.password,
         }
     )
 }

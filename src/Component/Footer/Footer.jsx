@@ -1,6 +1,12 @@
 import React from "react";
 
 const Footer = () => {
+  //! Props
+  //! State
+  const isMobile = window.innerWidth <= 768 ;
+  //! Function
+  //! Effect
+  //! Render
   return (
     <div className=" mt-5">
       <footer
@@ -8,7 +14,7 @@ const Footer = () => {
         style={{backgroundColor: "#ECEFF1"}}
       >
         <section
-          className="d-flex justify-content-between px-80 py-6 text-white"
+          className={`d-flex justify-content-between py-6 text-white ${!isMobile && "px-80"}`}
           style={{backgroundColor: "#21D192"}}
         >
           <div className="me-5">

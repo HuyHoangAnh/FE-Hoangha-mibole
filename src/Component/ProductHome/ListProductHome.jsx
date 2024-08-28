@@ -16,14 +16,13 @@ const ListProductHome = (props) => {
   const listProduct = productData?.data
     ?.filter((item) => item.productCompany === companyProduct)
     ?.slice(0, 3);
-  console.log("checked", listProduct);
 
   return (
     <div className={cx("col-content lts-product")}>
       {listProduct?.map((el, index) => {
         return (
           <a
-            href={`/product/${el?._id}`}
+            href={`/product/${el?._id}?productCompany=${el?.productCompany}`}
             alt={el?.productName}
             className={cx("item")}
             key={index}
