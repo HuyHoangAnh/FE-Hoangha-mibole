@@ -61,7 +61,7 @@ export const SWrapProductHome = styled.div`
     font-size: 14px;
     text-transform: uppercase;
   }
-  h4 {
+  /* h4 {
     display: block;
     margin-block-start: 1.33em;
     margin-block-end: 1.33em;
@@ -69,7 +69,7 @@ export const SWrapProductHome = styled.div`
     margin-inline-end: 0px;
     font-weight: bold;
     unicode-bidi: isolate;
-  }
+  } */
   div.header a {
     color: #fff;
     text-decoration: none;

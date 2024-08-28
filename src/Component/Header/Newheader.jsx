@@ -56,7 +56,7 @@ const NewHeader = () => {
   //! Effect
   //! Render
   return (
-    <header className="bg-emerald-900" style={{ position: "fixed", width: "100%", zIndex: "999" }}>
+    <header className="bg-emerald-900 fixed z-50 w-full">
       <nav aria-label="Global" className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8">
         <div className="flex lg:flex-1">
           <a href="/" className="-m-1.5 p-1.5">

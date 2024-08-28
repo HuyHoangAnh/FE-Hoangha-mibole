@@ -13,6 +13,7 @@ import NewHeader from "./Component/Header/Newheader.jsx";
 import Footer from "./Component/Footer/Footer.jsx";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'mdb-react-ui-kit/dist/css/mdb.min.css';
+import 'react-slideshow-image/dist/styles.css'
 
 
 const cx = classNames.bind(styles);

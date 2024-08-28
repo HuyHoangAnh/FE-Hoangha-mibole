@@ -26,6 +26,7 @@ const Banner = (props) => {
           )}
         >
           <img
+          className="drop-shadow-xl"
             src={el.imgPath}
             style={{
               display: el.id === indexActive ? "block" : "none",
@@ -42,9 +43,9 @@ const Banner = (props) => {
   return (
     <SWrapBanner>
       <div className={cx("banner container")}>
-        <div className={cx("")}>
+        {/* <div className={cx("")}> */}
           {showListBanner}
-          <div
+          {/* <div
             style={{
               display: "flex",
               flexDirection: "row",
@@ -71,9 +72,9 @@ const Banner = (props) => {
                 </div>
               );
             })}
-          </div>
+          </div> */}
         </div>
-      </div>
+      {/* </div> */}
     </SWrapBanner>
   );
 };

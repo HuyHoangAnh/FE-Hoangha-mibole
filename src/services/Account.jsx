@@ -12,8 +12,8 @@ export const signInApi = (name, address, email, phoneNumber, password) => {
     return axios.post(`http://localhost:8000${APIEndPoint.API_ACCOUNT}`, { name, address, email, phoneNumber, password });
 }
 
-export const getUserDetailApi = (id) => {
-    return axios.get(`http://localhost:8000${APIEndPoint.API_ACCOUNT}/${id}`)
+export const getUserDetailApi = (id, password) => {
+    return axios.get(`http://localhost:8000${APIEndPoint.API_ACCOUNT}/${id}`, password)
 }
 export const pathUserDetailApi = (id, data) => {
     return axios.patch(`http://localhost:8000${APIEndPoint.API_ACCOUNT}/${id}`,
