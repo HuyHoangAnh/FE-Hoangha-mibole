@@ -7,9 +7,9 @@ const ProductAlsoLike = (props) => {
   return (
     <div class="bg-white">
       <div class="max-w-2xl py-16 sm:py-24 lg:max-w-7xl ">
-        <h2 class="text-2xl font-bold tracking-tight text-gray-900">
+        {filteredProducts?.length > 0 && <h2 class="text-2xl font-bold tracking-tight text-gray-900">
           Các sản phẩm có thể bạn sẽ thích
-        </h2>
+        </h2>}
         <div class="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
         {filteredProducts?.slice(0, 4)?.map((el) => {
           return (

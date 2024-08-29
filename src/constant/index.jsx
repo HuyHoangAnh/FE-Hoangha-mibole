@@ -14,32 +14,33 @@ import IconTablet from '../assets/icon-tablet.png'
 import IconThucu from '../assets/icon-thucu.png'
 import IconTinhot from '../assets/icon-tinhot.png'
 import IconWatch from '../assets/icon-watch.png'
+import BannerSale from '../assets/saleBanner.jpg'
 
 export const listBanner = [
     {
         id: 0,
-        imgPath: BannerIphone,
+        imgPath: BannerSale,
         title: "HUMG1",
         content: "Đại học Mỏ - Địa chất",
     },
-    {
-        id: 1,
-        imgPath: BannerSony,
-        title: "HUMG2",
-        content: "Đại học Mỏ - Địa chất",
-    },
-    {
-        id: 2,
-        imgPath: BannerNote13,
-        title: "HUMG3",
-        content: "Đại học Mỏ - Địa chất",
-    },
-    {
-        id: 3,
-        imgPath: BannerZFold,
-        title: "HUMG4",
-        content: "Đại học Mỏ - Địa chất",
-    },
+    // {
+    //     id: 1,
+    //     imgPath: BannerSony,
+    //     title: "HUMG2",
+    //     content: "Đại học Mỏ - Địa chất",
+    // },
+    // {
+    //     id: 2,
+    //     imgPath: BannerNote13,
+    //     title: "HUMG3",
+    //     content: "Đại học Mỏ - Địa chất",
+    // },
+    // {
+    //     id: 3,
+    //     imgPath: BannerZFold,
+    //     title: "HUMG4",
+    //     content: "Đại học Mỏ - Địa chất",
+    // },
 ]
 
 export const listHeader = [

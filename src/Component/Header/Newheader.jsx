@@ -50,6 +50,9 @@ const NewHeader = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("userId");
     localStorage.removeItem("checkedAdmin");
+    localStorage.removeItem("phone");
+    localStorage.removeItem("name");
+    localStorage.removeItem("address");
     navigate("/account")
     toast.success("Log out success")
   }
@@ -125,8 +128,8 @@ const NewHeader = () => {
           <a href="/search" className="text-lg font-semibold leading-6 text-white">
             Tìm kiếm
           </a>
-          <a href="#" className="text-lg font-semibold leading-6 text-white">
-            Company
+          <a href="/cart" className="text-lg font-semibold leading-6 text-white">
+            Giỏ hàng
           </a>
           {localStorage.getItem("checkedAdmin") === "admin" &&
             <Popover className="relative">
@@ -235,10 +238,10 @@ const NewHeader = () => {
                   Tìm kiếm
                 </a>
                 <a
-                  href="#"
+                  href="/cart"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
-                  Company
+                  Giỏ hàng
                 </a>
                 {localStorage.getItem("checkedAdmin") === "admin" &&
                   <Disclosure as="div" className="-mx-3">

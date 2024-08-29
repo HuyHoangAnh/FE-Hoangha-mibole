@@ -52,7 +52,7 @@ const ProductCollection = (props) => {
                   className={cx("_img")}
                   style={{display: "flex", justifyContent: "center", maxHeight: "200px"}}
                 >
-                  <img alt={el?.productName} src={el?.images[0]?.url} height={"100%"}/>
+                  <img alt={el?.productName} src={el?.images[0]?.url} height={"100%"} style={{objectFit: "contain"}}/>
                 </a>
                 <h3>
                   <a

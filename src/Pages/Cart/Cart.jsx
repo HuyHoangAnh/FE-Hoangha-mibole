@@ -15,7 +15,10 @@ const Cart = () => {
     <SWrapCart>
         <div className="container">
             <div className="form">
-              <h1 className="text-4xl">Danh sách sản phẩm</h1>
+              <h1 className="text-4xl">Giỏ hàng</h1>
+              <p>Anh(chị): {localStorage.getItem("name")}</p>
+              <p>Giao đến địa chỉ: {localStorage.getItem("address")}</p>
+              <p>Số điện thoại: {localStorage.getItem("phone")}</p>
               <ul role="list" className="divide-y divide-gray-100">
                 {productAddToCart?.map((el) => {
                   return (

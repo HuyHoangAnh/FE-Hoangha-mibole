@@ -27,6 +27,8 @@ const ModalProduct = (props) => {
   const checkProduct = productData?.data?.filter(
     (item) => item._id === localStorage.getItem("checkIdProduct")
   );
+  console.log("checked-1",checkProduct);
+  
   // Update Product
   const handleSave = async () => {
     const updateProductDetail = {
@@ -108,6 +110,7 @@ const ModalProduct = (props) => {
                         return (
                           <Fragment>
                             {el?.images?.map((img) => {
+                              console.log("checked",img)
                               return (
                                 <img
                                   className="object-cover object-center"

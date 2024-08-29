@@ -48,7 +48,11 @@ const AdminProduct = () => {
           <ModalCreateProduct isOpenCreateProduct={isOpenCreateProduct} setIsOpenCreateProduct={setIsOpenCreateProduct} />
           <div className="container">
             <div className="form">
-              <h1 className="text-4xl">Danh sách sản phẩm</h1>
+              <h1 className="text-4xl">Danh sách sản phẩm (thêm số lượng tồn)</h1>
+              {/* Báo cáo doanh Thu
+              báo cáo số lượng
+              báo cáo tồn
+              theo thời gian hoặc mã sản phẩm */}
               <button className='w-60 h-16 bg-emerald-600 text-white' onClick={() => setIsOpenCreateProduct(true)}>Thêm sản phẩm</button>
               <ul role="list" className="divide-y divide-gray-100">
                 {productData?.data?.map((el) => {

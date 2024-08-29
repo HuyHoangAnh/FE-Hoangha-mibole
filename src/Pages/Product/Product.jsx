@@ -83,13 +83,13 @@ const Product = () => {
           <div className="detail-info-left">
             <div className="_image">
               {productData?.images?.map((el) => (
-                <img src={el?.url} alt={productData?.productName} />
+                <img src={el?.url} alt={productData?.productName} className="drop-shadow-xl"/>
               ))}
-              <div id="fordeerLabel-6548477673667_6546-0" class="fordeer-config-label" data-page-type="otherPage">
+              <div class="fordeer-config-label">
                 <div class="wrap-label-element fordeer-top-left-position" style={{width: "90px", minHeight: "40px", rotate: "0deg", margin: "0px"}}>
                   <div class="fordeer-text-wrap fordeer-animated false fordeer-shape-rectangle" style={{position: "relative", display: "flex", alignItems: "center", justifyContent: "center", borderRadius: "0px", opacity: "1", width: "90px", minHeight: "40px", background: "rgb(14, 61, 45)"}}>
                   <span style={{color: "rgb(255, 255, 255)", fontSize: "12px", rotate: "0deg", padding: "0.5rem", textAlign: "center"}}>
-                    <b>PRE-ORDER</b>
+                    <b>{productData?.productCompany}</b>
                   </span>
                   </div>
                 </div>
@@ -180,6 +180,12 @@ export const SWrapProduct = styled.div`
       text-align: left;
     }
   }
+  .fordeer-config-label{
+    position: absolute;
+    top: 0;
+    right: 0;
+    opacity: 0.5;
+  }
   .store p{
     font-size: 1.5rem;
   }
@@ -198,12 +204,16 @@ export const SWrapProduct = styled.div`
     }
   }
   .detail-info-left {
+    border-right: solid 1px #000;
     ._image {
-      border: solid 1px #000;
+      /* border: solid 1px #000; */
       display: flex;
       flex-direction: row;
       justify-content: center;
-      height: 430px;
+      max-width: 400px;
+      max-height: 430px;
+      height: 100%;
+      position: relative;
     }
   }
   .detail-info-right{
