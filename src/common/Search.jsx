@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useQuery } from "@tanstack/react-query";
-import { getProductApi } from "../services/Product";
 import * as APIEndPoint from "../services/apiEndPoint.jsx";
 
 const Search = () => {
@@ -10,18 +8,7 @@ const Search = () => {
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [productData, setProductData] = useState("");
   //! Function
-  //   const { refetch, data } = useQuery({
-  //     queryKey: ["get-search-product-data"],
-  //     queryFn: getProductApi,
-  //     enabled: false,
-  //     onSuccess: (response) => {
-  //       setLoading(true);
-  //       setResults(response?.data);
-  //       setLoading(false);
-  //     },
-  //   });
   const searchAPI = async () => {
     if (!name) return;
     setLoading(true);
