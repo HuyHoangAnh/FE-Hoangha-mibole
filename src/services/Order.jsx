@@ -8,9 +8,9 @@ export const getOrderApi = (token) => {
     });
 }
 
-export const postOrderApi = (token) => {
+export const postOrderApi = (token, orderData) => {
     // return axios.post(`${import.meta.env.VITE_BACK_END_HOST}${APIEndPoint.API_ACCOUNT}/login`, {email, password});
-    return axios.post(`http://localhost:8000${APIEndPoint.API_ORDER}`,{
+    return axios.post(`http://localhost:8000${APIEndPoint.API_ORDER}`,orderData, {
         headers: {Authorization: `Bearer ${token}`}
     });
 }

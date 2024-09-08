@@ -24,6 +24,9 @@ const AccountLogIn = (props) => {
         : navigate("/");
       localStorage.setItem("userId", res?.data?.user?._id);
       localStorage.setItem("checkedAdmin", res?.data?.user?.role);
+      localStorage.setItem("address", response?.data?.user?.address)
+      localStorage.setItem("phone", response?.data?.user?.phoneNumber)
+      localStorage.setItem("name", response?.data?.user?.name)
     } else {
       if (res && res?.data?.statusCode === 401) {
         toast.error(res?.data?.msg);

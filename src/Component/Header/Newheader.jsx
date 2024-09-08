@@ -53,6 +53,9 @@ const NewHeader = () => {
     localStorage.removeItem("phone");
     localStorage.removeItem("name");
     localStorage.removeItem("address");
+    localStorage.removeItem("address")
+    localStorage.removeItem("phone")
+    localStorage.removeItem("name")
     navigate("/account")
     toast.success("Log out success")
   }

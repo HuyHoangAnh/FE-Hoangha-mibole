@@ -19,9 +19,6 @@ const Profile = () => {
     enabled: true,
     onSuccess: (response) => {
       setProfileUser(response?.data?.user);
-      localStorage.setItem("address", response?.data?.user?.address)
-      localStorage.setItem("phone", response?.data?.user?.phoneNumber)
-      localStorage.setItem("name", response?.data?.user?.name)
     },
   });
   const [nameProfile, setNameProfile] = useState("");

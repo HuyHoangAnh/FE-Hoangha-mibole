@@ -82,7 +82,7 @@ const ModalProduct = (props) => {
                 <div className="relative flex w-full items-center overflow-hidden bg-white px-4 pb-8 pt-14 shadow-2xl sm:px-6 sm:pt-8 md:p-6 lg:p-8">
                   <button
                     onClick={() => {
-                      localStorage.removeItem("checkIdUser");
+                      localStorage.removeItem("checkIdProduct");
                       setIsOpenModal(false);
                     }}
                     type="button"
