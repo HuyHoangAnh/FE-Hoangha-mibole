@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { postOrderApi } from "../../services/Order";
 
 const Cart = () => {
+  const userId = localStorage.getItem("userId") 
   //! Props
   //! State
   const [productAddToCart, setProductAddToCart] = useState([]);
@@ -13,7 +14,7 @@ const Cart = () => {
       (product) => product?._id !== productId
     );
     setProductAddToCart(updatedCart);
-    localStorage.setItem("cart", JSON.stringify(updatedCart));
+    userId ? localStorage.setItem(`cart-${userId}`, JSON.stringify(updatedCart)) : localStorage.setItem("cart", JSON.stringify(updatedCart));
   };
   const updateQuantity = (productId, newQuantity) => {
     const updatedCart = productAddToCart.map((product) => {
@@ -24,7 +25,7 @@ const Cart = () => {
     });
 
     setProductAddToCart(updatedCart);
-    localStorage.setItem("cart", JSON.stringify(updatedCart));
+    userId ? localStorage.setItem(`cart-${userId}`, JSON.stringify(updatedCart)) : localStorage.setItem("cart", JSON.stringify(updatedCart));
   };
   const handleSelectProduct = (productId) => {
     if (selectedProducts.includes(productId)) {
@@ -81,7 +82,9 @@ const Cart = () => {
   };
   //! Effect
   useEffect(() => {
-    setProductAddToCart(JSON.parse(localStorage.getItem("cart")) || []);
+    const cartKey = userId ? `cart-${userId}` : "cart";
+    const savedCart = JSON.parse(localStorage.getItem(cartKey)) || [];
+    setProductAddToCart(savedCart);
   }, []);
   //! Render
   return (

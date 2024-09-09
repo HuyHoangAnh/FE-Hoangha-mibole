@@ -14,6 +14,7 @@ const Product = () => {
   const location = useLocation();
   const params = new URLSearchParams(location.search);
   const company = params.get("productCompany");
+  const userId = localStorage.getItem("userId");
 
   //! State
   const [quantity, setQuantity] = useState(1);
@@ -48,17 +49,16 @@ const Product = () => {
   );
 
   const updateCart = (product, quantity) => {
-    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    let cartKey = userId ? `cart-${userId}` : "cart";
+    let cart = JSON.parse(localStorage.getItem(cartKey)) || [];
     const index = cart.findIndex((item) => item._id === product._id);
-
     if (index >= 0) {
-      cart[index].quantity += quantity;
+        cart[index].quantity += quantity;
     } else {
-      cart.push({ ...product, quantity });
+        cart.push({ ...product, quantity });
     }
-
-    localStorage.setItem("cart", JSON.stringify(cart));
-  };
+    localStorage.setItem(cartKey, JSON.stringify(cart));
+};
   const handleAddToCart = () => {
     updateCart(productData, parseInt(quantity));
     alert("Sản phẩm đã được thêm vào giỏ hàng!");
