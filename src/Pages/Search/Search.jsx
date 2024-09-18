@@ -27,6 +27,11 @@ const Search = () => {
   return (
     <SWrapSearch>
       <div className="container">
+        <header class="w-fit">
+          <div class="mx-auto py-6">
+            <h1 class="text-3xl font-bold text-gray-800">Tìm kiếm sản phẩm</h1>
+          </div>
+        </header>
         {/* <input
           type="text"
           value={name}
@@ -35,8 +40,14 @@ const Search = () => {
         /> */}
         <div class="border border-success input-group">
           <div class="form-outline" data-mdb-input-init>
-            <input type="search" id="form1" class="form-control" value={name} onChange={(e) => setName(e.target.value)}/>
-            <label class="form-label" for="form1">
+            <input
+              type="search"
+              id="form1"
+              class="form-control"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+            <label class={`form-label ${name ? 'shrink' : ''}`} for="form1">
               Search
             </label>
           </div>
@@ -67,12 +78,17 @@ const Search = () => {
                   />
                 </a>
                 <h3>
-                  <a title={el?.productName} href={`/product/${el?._id}?productCompany=${el?.productCompany}`}>
+                  <a
+                    title={el?.productName}
+                    href={`/product/${el?._id}?productCompany=${el?.productCompany}`}
+                  >
                     {el?.productName}
                   </a>
                 </h3>
                 <div className="price">
-                  <strong>{el?.promotionalPrice}</strong>
+                  <strong>
+                    {el?.promotionalPrice?.toLocaleString("vi-VN")}
+                  </strong>
                 </div>
                 <div className="promotion-list">
                   <div>
@@ -179,5 +195,8 @@ export const SWrapSearch = styled.div`
         margin-bottom: 0;
       }
     }
+  }
+  .form-label.shrink {
+    transform: translateY(-1rem) translateY(0.1rem) scale(0.8);
   }
 `;

@@ -6,6 +6,7 @@ import Product from '../Pages/Product/Product'
 import Profile from '../Pages/Profile/Profile'
 import Search from '../Pages/Search/Search'
 import Cart from '../Pages/Cart/Cart'
+import Checkout from '../Pages/Cart/Checkout'
 import AdminUser from '../Pages/Admin/AdminUser'
 import AdminProduct from '../Pages/Admin/AdminProduct'
 
@@ -19,4 +20,5 @@ export const publicRoutes = [
     {path: "/admin/product", component: AdminProduct},
     {path: "/search", component: Search},
     {path: "/cart", component: Cart},
+    {path: "/checkout", component: Checkout},
 ]

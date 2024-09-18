@@ -13,14 +13,14 @@ export const getProductApi = (page = 1) => {
     });
   };
 export const getProductDetailApi = (id, company) => {
-    return axios.get(`http://localhost:8000${APIEndPoint.API_PRODUCT}/${id}?productCompany=${company}&perPage=12&price=1000000000&page=1&sort=asc`)
+    return axios.get(`http://localhost:8000${APIEndPoint.API_PRODUCT}/${id}?productCompany=${company}&perPage=1&price=1000000000&page=1&sort=asc`)
 }
-export const getProductCollectionCompanyApi = (company) => {
-    return axios.get(`http://localhost:8000${APIEndPoint.API_PRODUCT}?productCompany=${company}&perPage=12&price=1000000000&page=1&sort=asc`)
+export const getProductCollectionCompanyApi = (company,perPage) => {
+    return axios.get(`http://localhost:8000${APIEndPoint.API_PRODUCT}?productCompany=${company}&perPage=${perPage}&price=1000000000&page=1&sort=asc`)
 }
 
-export const getProductCollectionTypeApi = (company) => {
-    return axios.get(`http://localhost:8000${APIEndPoint.API_PRODUCT}?productType=${company}&perPage=12&price=1000000000&page=1&sort=asc`)
+export const getProductCollectionTypeApi = (company,perPage) => {
+    return axios.get(`http://localhost:8000${APIEndPoint.API_PRODUCT}?productType=${company}&perPage=${perPage}&price=1000000000&page=1&sort=asc`)
 }
 
 export const deleteProductDetailApi = (id, token) => {

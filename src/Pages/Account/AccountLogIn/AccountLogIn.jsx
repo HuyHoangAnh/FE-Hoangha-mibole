@@ -22,17 +22,17 @@ const AccountLogIn = (props) => {
       res?.data?.user?.role === "admin"
         ? navigate("/collections")
         : navigate("/");
-      localStorage.setItem("userId", res?.data?.user?._id);
-      localStorage.setItem("checkedAdmin", res?.data?.user?.role);
-      localStorage.setItem("address", response?.data?.user?.address)
-      localStorage.setItem("phone", response?.data?.user?.phoneNumber)
-      localStorage.setItem("name", response?.data?.user?.name)
     } else {
       if (res && res?.data?.statusCode === 401) {
         toast.error(res?.data?.msg);
       }
     }
     setIsLoading(false);
+    localStorage.setItem("userId", res?.data?.user?._id);
+    localStorage.setItem("checkedAdmin", res?.data?.user?.role);
+    localStorage.setItem("address", res?.data?.user?.address)
+    localStorage.setItem("phone", res?.data?.user?.phoneNumber)
+    localStorage.setItem("name", res?.data?.user?.name)
   };
 
   //! Render

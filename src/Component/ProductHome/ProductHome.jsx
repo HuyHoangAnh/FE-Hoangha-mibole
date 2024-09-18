@@ -20,7 +20,7 @@ const ProductHome = (props) => {
       <div className={cx("container")}>
         <div className={cx("box-product-home box-home")}>
           <HeaderProduct listAppleReseller={listAppleReseller} companyProduct={companyProduct} />
-          <ListProductHome listProductApple={listProductApple} productData={productData} companyProduct={companyProduct}/>
+          <ListProductHome productData={productData} companyProduct={companyProduct}/>
         </div>
       </div>
     </SWrapProductHome>

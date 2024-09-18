@@ -4,6 +4,8 @@ const ProductAlsoLike = (props) => {
   //! Props
   const {filteredProducts} = props
   //! Render
+  console.log("checked", filteredProducts);
+  
   return (
     <div class="bg-white">
       <div class="max-w-2xl py-16 sm:py-24 lg:max-w-7xl ">
@@ -34,7 +36,7 @@ const ProductAlsoLike = (props) => {
                 </h3>
                 <p class="mt-1 text-sm text-gray-500">Black</p>
               </div>
-              <p class="text-sm font-medium text-gray-900">{el?.promotionalPrice}</p>
+              <p class="text-sm font-medium text-gray-900">{el?.promotionalPrice?.toLocaleString("vi-VN")}</p>
             </div>
           </div>
           )})}

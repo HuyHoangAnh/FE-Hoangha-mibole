@@ -19,7 +19,7 @@ const ProductCollection = (props) => {
   const [ productCollections, setProductCollections ] = useState("")
   const { refetch, data } = useQuery({
     queryKey: ["product-collection-data"],
-    queryFn: () => params.get("productCompany") ? getProductCollectionCompanyApi(company) : getProductCollectionTypeApi(company),
+    queryFn: () => params.get("productCompany") ? getProductCollectionCompanyApi(company,"12") : getProductCollectionTypeApi(company,"12"),
     enabled: true,
     onSuccess: (response) => { 
       setProductCollections(response?.data);
@@ -63,7 +63,7 @@ const ProductCollection = (props) => {
                   </a>
                 </h3>
                 <div className="price">
-                  <strong>{el?.promotionalPrice}</strong>
+                  <strong>{el?.promotionalPrice?.toLocaleString("vi-VN")}</strong>
                 </div>
                 <div className="promotion-list">
                   <div>

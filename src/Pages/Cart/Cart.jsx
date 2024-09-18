@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { postOrderApi } from "../../services/Order";
 
 const Cart = () => {
-  const userId = localStorage.getItem("userId") 
+  const userId = localStorage.getItem("userId");
   //! Props
   //! State
   const [productAddToCart, setProductAddToCart] = useState([]);
@@ -14,7 +14,9 @@ const Cart = () => {
       (product) => product?._id !== productId
     );
     setProductAddToCart(updatedCart);
-    userId ? localStorage.setItem(`cart-${userId}`, JSON.stringify(updatedCart)) : localStorage.setItem("cart", JSON.stringify(updatedCart));
+    userId
+      ? localStorage.setItem(`cart-${userId}`, JSON.stringify(updatedCart))
+      : localStorage.setItem("cart", JSON.stringify(updatedCart));
   };
   const updateQuantity = (productId, newQuantity) => {
     const updatedCart = productAddToCart.map((product) => {
@@ -25,7 +27,9 @@ const Cart = () => {
     });
 
     setProductAddToCart(updatedCart);
-    userId ? localStorage.setItem(`cart-${userId}`, JSON.stringify(updatedCart)) : localStorage.setItem("cart", JSON.stringify(updatedCart));
+    userId
+      ? localStorage.setItem(`cart-${userId}`, JSON.stringify(updatedCart))
+      : localStorage.setItem("cart", JSON.stringify(updatedCart));
   };
   const handleSelectProduct = (productId) => {
     if (selectedProducts.includes(productId)) {
@@ -34,29 +38,8 @@ const Cart = () => {
       setSelectedProducts([...selectedProducts, productId]);
     }
   };
-  // const handleCheckout = async () => {
-  //   const token = localStorage.getItem("token");
-  //   const selectedProductDetails = productAddToCart.filter((product) =>
-  //     selectedProducts.includes(product._id)
-  //   );
-  //   const orderData = {
-  //     userID: localStorage.getItem("userId"),
-  //     products: selectedProductDetails.map((product) => ({
-  //       idProduct: product._id,
-  //       amount: product.quantity,
-  //     })),
-  //   };
-
-  //   try {
-  //     postOrderApi(token, orderData )
-  //     alert("Order created successfully!");
-  //   } catch (error) {
-  //     console.error("Error creating order:", error);
-  //     alert("Error creating order");
-  //   }
-  // };
   const handleCheckout = async () => {
-        const token = localStorage.getItem("token");
+    const token = localStorage.getItem("token");
     const selectedProductDetails = productAddToCart.filter((product) =>
       selectedProducts.includes(product._id)
     );
@@ -67,18 +50,8 @@ const Cart = () => {
         amount: product.quantity,
       })),
     };
-    let res = await postOrderApi(token, orderData );
-    console.log("res",res);
-    
-    // if (res?.data?.msg === "Success") {
-    //   toast.success("Thêm sản phẩm thành công")
-    //   setIsOpenCreateProduct(false)
-    //   window.location.reload()
-    // } else {
-    //   if (res && res?.data?.statusCode === 401) {
-    //     toast.error(res?.data?.msg);
-    //   }
-    // }
+    let res = await postOrderApi(token, orderData);
+    console.log("res", res);
   };
   //! Effect
   useEffect(() => {
@@ -104,11 +77,11 @@ const Cart = () => {
                   className="flex justify-between gap-x-6 py-5 w-full"
                 >
                   <input
-                      type="checkbox"
-                      className="bg-white"
-                      onChange={() => handleSelectProduct(el._id)}
-                      checked={selectedProducts.includes(el._id)}
-                    />
+                    type="checkbox"
+                    className="bg-white"
+                    onChange={() => handleSelectProduct(el._id)}
+                    checked={selectedProducts.includes(el._id)}
+                  />
                   <a
                     href={`/product/${el?._id}?productCompany=${el?.productCompany}`}
                     className="flex gap-x-4 w-4/12"
@@ -145,22 +118,18 @@ const Cart = () => {
                         className="bg-white border-0 w-fit"
                         type="number"
                         min="1"
-                        value={el.quantity} // Hiển thị số lượng từ `productAddToCart`
+                        value={el.quantity}
                         onInput={(e) => {
                           let value = e.target.value > 0 ? e.target.value : 1;
-
-                          // Nếu giá trị lớn hơn el.amount, giới hạn lại bằng el.amount
                           if (value > el.amount) {
                             value = el.amount;
                           }
-
-                          // Loại bỏ số 0 ở đầu nếu có
                           if (value.length > 1 && value.startsWith("0")) {
                             value = value.slice(1);
                           }
 
                           e.target.value = value;
-                          updateQuantity(el._id, value); // Cập nhật số lượng và lưu vào localStorage
+                          updateQuantity(el._id, value);
                         }}
                         inputMode="numeric"
                       />
@@ -170,13 +139,15 @@ const Cart = () => {
                     <p>
                       Đơn giá:{" "}
                       {el?.promotionalPrice
-                        ? el?.promotionalPrice
+                        ? el?.promotionalPrice?.toLocaleString("vi-VN")
                         : "Chưa xác định"}
                     </p>
                     <p>
                       Thành tiền:{" "}
                       {el?.promotionalPrice && el?.quantity
-                        ? el?.promotionalPrice * el?.quantity
+                        ? (el?.promotionalPrice * el?.quantity)?.toLocaleString(
+                            "vi-VN"
+                          )
                         : "Chưa xác định"}
                     </p>
                   </div>
@@ -194,10 +165,10 @@ const Cart = () => {
             })}
           </ul>
           <div className="text-end">
-          <button
+            <button
               className="bg-red-400 py-3 px-20 text-white"
               onClick={handleCheckout}
-              disabled={selectedProducts.length === 0} // Vô hiệu hóa nút nếu không có sản phẩm được chọn
+              disabled={selectedProducts.length === 0}
             >
               Thanh toán
             </button>
